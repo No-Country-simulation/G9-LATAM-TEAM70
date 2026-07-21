@@ -143,8 +143,7 @@ def train_model(df):
             C=1.0,
             class_weight='balanced',
             random_state=42,
-            solver='lbfgs',
-            multi_class='multinomial'
+            solver='lbfgs'
         ))
     ])
     
