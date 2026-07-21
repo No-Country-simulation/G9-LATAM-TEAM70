@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: techmind-api
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  docker:
+    compose:
+      enabled: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+model:
+  python:
+    script-path: ${MODEL_SCRIPT_PATH:src/main/python/predict.py}
+    model-path: ${MODEL_PATH:src/main/python/model.pkl}
+    timeout-seconds: 30
+
+logging:
+  level:
+    com.team70: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
