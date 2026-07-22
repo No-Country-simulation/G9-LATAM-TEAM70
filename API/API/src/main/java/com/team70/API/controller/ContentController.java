@@ -29,7 +29,7 @@ public class ContentController {
     public ResponseEntity<ContentResponse> processContent(@Valid @RequestBody ContentRequest request) {
         log.info("Received request to process content: {}", request.getTitulo());
         
-        ContentResponse response = pythonModelService.predictCategory(request);
+        ContentResponse response = pythonModelService.predictAndSave(request);
         
         log.info("Content processed successfully. Category: {}", response.getCategoria());
         return ResponseEntity.ok(response);
@@ -41,7 +41,7 @@ public class ContentController {
         log.info("Received batch request with {} items", requests.size());
         
         java.util.List<ContentResponse> responses = requests.stream()
-                .map(pythonModelService::predictCategory)
+                .map(pythonModelService::predictAndSave)
                 .toList();
         
         log.info("Batch processing completed for {} items", responses.size());

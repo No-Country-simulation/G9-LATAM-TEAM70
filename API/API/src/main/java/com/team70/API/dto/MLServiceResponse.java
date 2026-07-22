@@ -11,13 +11,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContentResponse {
-
+public class MLServiceResponse {
     private String categoria;
     private Double probabilidad;
     private List<String> informacionAdicional;
     private String modeloUtilizado;
     private Long tiempoProcesamientoMs;
-    private Long inputId;
-    private Long outputId;
 }
