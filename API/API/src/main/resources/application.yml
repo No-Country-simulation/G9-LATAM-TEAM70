@@ -16,14 +16,18 @@ spring:
 
 server:
   port: 8080
+  address: 0.0.0.0
   servlet:
     context-path: /api
+  shutdown: graceful
 
-model:
-  python:
+python:
+  executable: python3
+  model:
     script-path: ${MODEL_SCRIPT_PATH:src/main/python/predict.py}
-    model-path: ${MODEL_PATH:src/main/python/model.pkl}
-    timeout-seconds: 30
+    path: ${MODEL_PATH:models/modelo.pkl}
+    vectorizer-path: ${VECTORIZER_PATH:models/vectorizer.pkl}
+  timeout-seconds: 30
 
 logging:
   level:

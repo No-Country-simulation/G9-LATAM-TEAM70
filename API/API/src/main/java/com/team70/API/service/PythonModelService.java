@@ -2,18 +2,26 @@ package com.team70.API.service;
 
 import com.team70.API.dto.ContentRequest;
 import com.team70.API.dto.ContentResponse;
+import com.team70.API.entity.InputUser;
+import com.team70.API.entity.KeyWord;
+import com.team70.API.entity.OutputUser;
+import com.team70.API.repository.InputUserRepository;
+import com.team70.API.repository.KeyWordRepository;
+import com.team70.API.repository.OutputUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.PostConstruct;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Service
@@ -32,6 +40,13 @@ public class PythonModelService {
     @Value("${python.model.vectorizer-path:models/vectorizer.pkl}")
     private String vectorizerPath;
 
+    @Value("${python.model.timeout-seconds:30}")
+    private int timeoutSeconds;
+
+    private final InputUserRepository inputUserRepository;
+    private final OutputUserRepository outputUserRepository;
+    private final KeyWordRepository keyWordRepository;
+
     private boolean modelFilesExist = false;
 
     @PostConstruct
@@ -39,9 +54,9 @@ public class PythonModelService {
         File modelFile = new File(modelPath);
         File vectorizerFile = new File(vectorizerPath);
         File scriptFile = new File(pythonScriptPath);
-        
+
         modelFilesExist = modelFile.exists() && vectorizerFile.exists() && scriptFile.exists();
-        
+
         if (modelFilesExist) {
             log.info("Model files found and ready to use");
             log.info("Model: {}", modelFile.getAbsolutePath());
@@ -55,14 +70,58 @@ public class PythonModelService {
         }
     }
 
-    public ContentResponse predictCategory(ContentRequest request) {
+    @Transactional
+    public ContentResponse predictAndSave(ContentRequest request) {
         Instant start = Instant.now();
-        
+
+        // 1. Save input
+        InputUser inputUser = InputUser.builder()
+                .title(request.getTitulo())
+                .text(request.getTexto())
+                .build();
+        inputUser = inputUserRepository.save(inputUser);
+
+        ContentResponse response;
         if (!modelFilesExist) {
             log.warn("Model files not found, returning mock response");
-            return getMockResponse(request, Duration.between(start, Instant.now()).toMillis());
+            response = getMockResponse(request, Duration.between(start, Instant.now()).toMillis());
+        } else {
+            response = callPythonModel(request, start);
         }
 
+        // 2. Save output
+        OutputUser outputUser = OutputUser.builder()
+                .category(response.getCategoria())
+                .probability(response.getProbabilidad())
+                .modelUsed(response.getModeloUtilizado())
+                .processingTimeMs(response.getTiempoProcesamientoMs())
+                .inputUser(inputUser)
+                .build();
+
+        // 3. Save keywords
+        if (response.getInformacionAdicional() != null && !response.getInformacionAdicional().isEmpty()) {
+            Set<KeyWord> keywords = new HashSet<>();
+            for (String kw : response.getInformacionAdicional()) {
+                KeyWord keyWord = keyWordRepository.findByKeyword(kw);
+                if (keyWord == null) {
+                    keyWord = KeyWord.builder().keyword(kw).build();
+                    keyWord = keyWordRepository.save(keyWord);
+                }
+                keywords.add(keyWord);
+            }
+            outputUser.setKeywords(keywords);
+        }
+
+        outputUser = outputUserRepository.save(outputUser);
+
+        // 4. Update response with IDs
+        response.setInputId(inputUser.getId());
+        response.setOutputId(outputUser.getId());
+
+        return response;
+    }
+
+    private ContentResponse callPythonModel(ContentRequest request, Instant start) {
         try {
             String inputJson = String.format(
                 "{\"titulo\": \"%s\", \"texto\": \"%s\"}",
@@ -77,12 +136,12 @@ public class PythonModelService {
                 "--vectorizer", vectorizerPath,
                 "--input", inputJson
             );
-            
+
             pb.redirectErrorStream(true);
             Process process = pb.start();
 
             String output = readProcessOutput(process);
-            int exitCode = process.waitFor();
+            int exitCode = process.waitFor(timeoutSeconds, TimeUnit.SECONDS) ? process.exitValue() : -1;
 
             long processingTime = Duration.between(start, Instant.now()).toMillis();
 
@@ -114,7 +173,7 @@ public class PythonModelService {
     private ContentResponse parsePythonOutput(String output, long processingTime) {
         try {
             String json = output.trim();
-            
+
             String categoria = extractJsonValue(json, "categoria");
             Double probabilidad = Double.parseDouble(extractJsonValue(json, "probabilidad"));
             List<String> informacionAdicional = extractJsonArray(json, "informacion_adicional");
@@ -141,7 +200,7 @@ public class PythonModelService {
 
     private String extractJsonValue(String json, String key) {
         String pattern = "\"" + key + "\"\\s*:\\s*\"([^\"]*)\"";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(pattern);
+        Pattern p = Pattern.compile(pattern);
         java.util.regex.Matcher m = p.matcher(json);
         if (m.find()) {
             return m.group(1);
@@ -151,11 +210,11 @@ public class PythonModelService {
 
     private List<String> extractJsonArray(String json, String key) {
         String pattern = "\"" + key + "\"\\s*:\\s*\\[([^\\]]*)\\]";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(pattern);
+        Pattern p = Pattern.compile(pattern);
         java.util.regex.Matcher m = p.matcher(json);
         if (m.find()) {
             String arrayContent = m.group(1);
-            return java.util.Arrays.stream(arrayContent.split(","))
+            return Arrays.stream(arrayContent.split(","))
                     .map(s -> s.trim().replaceAll("\"", ""))
                     .filter(s -> !s.isEmpty())
                     .toList();
@@ -173,7 +232,7 @@ public class PythonModelService {
 
     private ContentResponse getMockResponse(ContentRequest request, long processingTime) {
         String categoria = categorizeMock(request.getTitulo(), request.getTexto());
-        
+
         return ContentResponse.builder()
                 .categoria(categoria)
                 .probabilidad(0.85 + Math.random() * 0.1)
@@ -185,12 +244,12 @@ public class PythonModelService {
 
     private String categorizeMock(String titulo, String texto) {
         String combined = (titulo + " " + texto).toLowerCase();
-        
-        if (combined.contains("spring") || combined.contains("java") || combined.contains("api") 
+
+        if (combined.contains("spring") || combined.contains("java") || combined.contains("api")
             || combined.contains("backend") || combined.contains("rest") || combined.contains("microservicio")) {
             return "Backend";
         }
-        if (combined.contains("react") || combined.contains("angular") || combined.contains("vue") 
+        if (combined.contains("react") || combined.contains("angular") || combined.contains("vue")
             || combined.contains("frontend") || combined.contains("javascript") || combined.contains("typescript")
             || combined.contains("html") || combined.contains("css")) {
             return "Frontend";
@@ -208,24 +267,24 @@ public class PythonModelService {
             || combined.contains("postgresql") || combined.contains("mongodb")) {
             return "Base de Datos";
         }
-        
+
         return "General";
     }
 
     private List<String> extractKeywords(String titulo, String texto) {
         String combined = (titulo + " " + texto).toLowerCase();
-        List<String> keywords = new java.util.ArrayList<>();
-        
+        List<String> keywords = new ArrayList<>();
+
         String[] techKeywords = {"java", "spring", "python", "react", "angular", "vue", "javascript", "typescript",
             "api", "rest", "microservicio", "docker", "kubernetes", "aws", "azure", "sql", "nosql",
             "machine learning", "data science", "pandas", "tensorflow", "pytorch", "devops", "ci/cd"};
-        
+
         for (String kw : techKeywords) {
             if (combined.contains(kw)) {
                 keywords.add(kw.substring(0, 1).toUpperCase() + kw.substring(1));
             }
         }
-        
+
         return keywords.isEmpty() ? List.of("Tecnología") : keywords.stream().distinct().limit(5).toList();
     }
 }
