@@ -14,8 +14,8 @@
     <name>TechMind API</name>
     <description>API for intelligent technical content organization using ML models</description>
     <properties>
-        <java.version>21</java.version>
-        <maven.compiler.release>21</maven.compiler.release>
+        <java.version>25</java.version>
+        <maven.compiler.release>25</maven.compiler.release>
         <lombok.version>1.18.38</lombok.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
     </properties>
@@ -52,7 +52,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- WebClient for Python ML Service communication -->
+        <!-- WebClient for external Machine Learning service communication -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
