@@ -5,27 +5,23 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-  docker:
-    compose:
-      enabled: false
   devtools:
     restart:
       enabled: false
     livereload:
       enabled: false
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:techmind}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/TechMind_db?serverTimezone=UTC&useSSL=false
+    username: root
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: ${SHOW_SQL:false}
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
 
 server:
   port: 8080
@@ -47,3 +43,8 @@ ml:
   service:
     url: ${ML_SERVICE_URL:http://localhost:5000}
     timeout: ${ML_TIMEOUT:30000}
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:techmind-secret-key-2024-very-long-secret-key-for-hs256}
+  expiration: ${JWT_EXPIRATION:86400000}

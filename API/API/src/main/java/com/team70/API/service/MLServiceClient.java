@@ -72,11 +72,11 @@ public class MLServiceClient {
 
     private ContentResponse getFallbackResponse(int statusCode) {
         return ContentResponse.builder()
-                .categoria("Error")
-                .probabilidad(0.0)
-                .informacionAdicional(List.of("ML Service unavailable"))
-                .modeloUtilizado("Fallback")
-                .tiempoProcesamientoMs(0L)
+                .category("Error")
+                .score(0.0)
+                .keywords(List.of("ML Service unavailable"))
+                .modelUsed("Fallback")
+                .processingTimeMs(0L)
                 .build();
     }
 }

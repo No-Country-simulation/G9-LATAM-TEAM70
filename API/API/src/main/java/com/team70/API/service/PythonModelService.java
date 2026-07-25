@@ -2,9 +2,11 @@ package com.team70.API.service;
 
 import com.team70.API.dto.ContentRequest;
 import com.team70.API.dto.ContentResponse;
+import com.team70.API.entity.Category;
 import com.team70.API.entity.InputUser;
 import com.team70.API.entity.KeyWord;
 import com.team70.API.entity.OutputUser;
+import com.team70.API.repository.CategoryRepository;
 import com.team70.API.repository.InputUserRepository;
 import com.team70.API.repository.KeyWordRepository;
 import com.team70.API.repository.OutputUserRepository;
@@ -26,6 +28,7 @@ public class PythonModelService {
 
     private final InputUserRepository inputUserRepository;
     private final OutputUserRepository outputUserRepository;
+    private final CategoryRepository categoryRepository;
     private final KeyWordRepository keyWordRepository;
     private final MLServiceClient mlServiceClient;
 
@@ -35,8 +38,8 @@ public class PythonModelService {
 
         // 1. Save input
         InputUser inputUser = InputUser.builder()
-                .title(request.getTitulo())
-                .text(request.getTexto())
+                .title(request.getTitle())
+                .content(request.getContent())
                 .build();
         inputUser = inputUserRepository.save(inputUser);
 
@@ -44,26 +47,25 @@ public class PythonModelService {
         ContentResponse response = mlServiceClient.predict(request);
 
         long processingTime = Duration.between(start, Instant.now()).toMillis();
-        response.setTiempoProcesamientoMs(processingTime);
+        response.setProcessingTimeMs(processingTime);
 
-        // 3. Save output
+        // 3. Get or create category
+        Category category = categoryRepository.findByName(response.getCategory())
+                .orElseGet(() -> categoryRepository.save(Category.builder().name(response.getCategory()).build()));
+
+        // 4. Save output
         OutputUser outputUser = OutputUser.builder()
-                .category(response.getCategoria())
-                .probability(response.getProbabilidad())
-                .modelUsed(response.getModeloUtilizado())
-                .processingTimeMs(response.getTiempoProcesamientoMs())
+                .category(category)
+                .score(response.getScore().floatValue())
                 .inputUser(inputUser)
                 .build();
 
-        // 4. Save keywords
-        if (response.getInformacionAdicional() != null && !response.getInformacionAdicional().isEmpty()) {
+        // 5. Save keywords
+        if (response.getKeywords() != null && !response.getKeywords().isEmpty()) {
             Set<KeyWord> keywords = new HashSet<>();
-            for (String kw : response.getInformacionAdicional()) {
-                KeyWord keyWord = keyWordRepository.findByKeyword(kw);
-                if (keyWord == null) {
-                    keyWord = KeyWord.builder().keyword(kw).build();
-                    keyWord = keyWordRepository.save(keyWord);
-                }
+            for (String kw : response.getKeywords()) {
+                KeyWord keyWord = keyWordRepository.findByWord(kw)
+                        .orElseGet(() -> keyWordRepository.save(KeyWord.builder().word(kw).build()));
                 keywords.add(keyWord);
             }
             outputUser.setKeywords(keywords);
@@ -71,7 +73,7 @@ public class PythonModelService {
 
         outputUser = outputUserRepository.save(outputUser);
 
-        // 5. Update response with IDs
+        // 6. Update response with IDs
         response.setInputId(inputUser.getId());
         response.setOutputId(outputUser.getId());
 
@@ -83,8 +85,8 @@ public class PythonModelService {
         // Save all inputs first
         List<InputUser> inputUsers = requests.stream()
                 .map(req -> InputUser.builder()
-                        .title(req.getTitulo())
-                        .text(req.getTexto())
+                        .title(req.getTitle())
+                        .content(req.getContent())
                         .build())
                 .toList();
         inputUsers = inputUserRepository.saveAll(inputUsers);
@@ -97,22 +99,20 @@ public class PythonModelService {
             ContentResponse response = responses.get(i);
             InputUser inputUser = inputUsers.get(i);
 
+            Category category = categoryRepository.findByName(response.getCategory())
+                    .orElseGet(() -> categoryRepository.save(Category.builder().name(response.getCategory()).build()));
+
             OutputUser outputUser = OutputUser.builder()
-                    .category(response.getCategoria())
-                    .probability(response.getProbabilidad())
-                    .modelUsed(response.getModeloUtilizado())
-                    .processingTimeMs(response.getTiempoProcesamientoMs())
+                    .category(category)
+                    .score(response.getScore().floatValue())
                     .inputUser(inputUser)
                     .build();
 
-            if (response.getInformacionAdicional() != null && !response.getInformacionAdicional().isEmpty()) {
+            if (response.getKeywords() != null && !response.getKeywords().isEmpty()) {
                 Set<KeyWord> keywords = new HashSet<>();
-                for (String kw : response.getInformacionAdicional()) {
-                    KeyWord keyWord = keyWordRepository.findByKeyword(kw);
-                    if (keyWord == null) {
-                        keyWord = KeyWord.builder().keyword(kw).build();
-                        keyWord = keyWordRepository.save(keyWord);
-                    }
+                for (String kw : response.getKeywords()) {
+                    KeyWord keyWord = keyWordRepository.findByWord(kw)
+                            .orElseGet(() -> keyWordRepository.save(KeyWord.builder().word(kw).build()));
                     keywords.add(keyWord);
                 }
                 outputUser.setKeywords(keywords);
