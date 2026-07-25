@@ -11,7 +11,7 @@ spring:
     livereload:
       enabled: false
   datasource:
-    url: jdbc:mysql://localhost:3306/TechMind_db?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/TechMind_db?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ${DB_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver

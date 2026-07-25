@@ -15,8 +15,10 @@
     <description>API for intelligent technical content organization using ML models</description>
     <properties>
         <java.version>25</java.version>
-        <maven.compiler.release>25</maven.compiler.release>
+        <!-- Run on JDK 25 while retaining bytecode compatible with Spring Boot 3.4. -->
+        <maven.compiler.release>21</maven.compiler.release>
         <lombok.version>1.18.38</lombok.version>
+        <byte-buddy.version>1.18.7</byte-buddy.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
     </properties>
     <dependencies>
@@ -92,6 +94,18 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Java 25 support for Mockito's inline mock maker -->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>${byte-buddy.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- H2 Database for Testing -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -106,12 +120,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <jvmArguments>--enable-native-access=ALL-UNNAMED</jvmArguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>--enable-native-access=ALL-UNNAMED</argLine>
                 </configuration>
             </plugin>
             <plugin>

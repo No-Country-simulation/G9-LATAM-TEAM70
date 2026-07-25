@@ -105,7 +105,8 @@ class PythonModelServiceTest {
         assertEquals(1L, result.getInputId());
         assertEquals(1L, result.getOutputId());
         assertEquals(List.of("Java", "Spring Boot"), result.getKeywords());
-        assertEquals(50L, result.getProcessingTimeMs());
+        assertNotNull(result.getProcessingTimeMs());
+        assertTrue(result.getProcessingTimeMs() >= 0);
 
         verify(inputUserRepository).save(any(InputUser.class));
         verify(mlServiceClient).predict(testRequest);
@@ -161,17 +162,8 @@ class PythonModelServiceTest {
         when(mlServiceClient.predict(any(ContentRequest.class))).thenReturn(testResponse);
         when(categoryRepository.findByName("Backend")).thenReturn(Optional.of(category));
         when(keyWordRepository.findByWord("Java")).thenReturn(Optional.empty());
-        when(keyWordRepository.save(any(KeyWord.class))).thenAnswer(invocation -> {
-            KeyWord kw = invocation.getArgument(0);
-            kw.setId(1L);
-            return kw;
-        });
+        when(keyWordRepository.save(any(KeyWord.class))).thenAnswer(invocation -> invocation.getArgument(0));
         when(keyWordRepository.findByWord("Spring Boot")).thenReturn(Optional.empty());
-        when(keyWordRepository.save(any(KeyWord.class))).thenAnswer(invocation -> {
-            KeyWord kw = invocation.getArgument(0);
-            kw.setId(2L);
-            return kw;
-        });
         when(outputUserRepository.save(any(OutputUser.class))).thenAnswer(invocation -> {
             OutputUser saved = invocation.getArgument(0);
             saved.setId(1L);

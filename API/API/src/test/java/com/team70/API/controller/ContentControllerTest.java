@@ -2,13 +2,16 @@ package com.team70.API.controller;
 
 import com.team70.API.dto.ContentRequest;
 import com.team70.API.dto.ContentResponse;
+import com.team70.API.security.JwtAuthenticationFilter;
 import com.team70.API.service.PythonModelService;
-import com.team70.API.config.TestConfig;
+import com.team70.API.config.TestSecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -20,14 +23,20 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ContentController.class)
-@Import(TestConfig.class)
+@WebMvcTest(
+        controllers = ContentController.class,
+        excludeFilters = @ComponentScan.Filter(
+                type = FilterType.ASSIGNABLE_TYPE,
+                classes = JwtAuthenticationFilter.class
+        )
+)
+@Import(TestSecurityConfig.class)
 class ContentControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockitoBean
     private PythonModelService pythonModelService;
 
     @Test
@@ -46,7 +55,7 @@ class ContentControllerTest {
         when(pythonModelService.predictAndSave(any(ContentRequest.class))).thenReturn(response);
 
         // When & Then
-        mockMvc.perform(post("/api/contenido")
+        mockMvc.perform(post("/contenido")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"title\":\"Test Title\",\"content\":\"Test content for classification\"}"))
                 .andExpect(status().isOk())
@@ -64,7 +73,7 @@ class ContentControllerTest {
     @Test
     void processContent_InvalidTitle_ReturnsBadRequest() throws Exception {
         // When & Then
-        mockMvc.perform(post("/api/contenido")
+        mockMvc.perform(post("/contenido")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"title\":\"\",\"content\":\"Valid content\"}"))
                 .andExpect(status().isBadRequest())
@@ -77,7 +86,7 @@ class ContentControllerTest {
     @Test
     void processContent_InvalidContent_ReturnsBadRequest() throws Exception {
         // When & Then
-        mockMvc.perform(post("/api/contenido")
+        mockMvc.perform(post("/contenido")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"title\":\"Valid Title\",\"content\":\"\"}"))
                 .andExpect(status().isBadRequest())
@@ -90,7 +99,7 @@ class ContentControllerTest {
     @Test
     void processContent_MissingFields_ReturnsBadRequest() throws Exception {
         // When & Then
-        mockMvc.perform(post("/api/contenido")
+        mockMvc.perform(post("/contenido")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
                 .andExpect(status().isBadRequest())
@@ -127,7 +136,7 @@ class ContentControllerTest {
         when(pythonModelService.predictAndSaveBatch(anyList())).thenReturn(List.of(response1, response2));
 
         // When & Then
-        mockMvc.perform(post("/api/contenido/batch")
+        mockMvc.perform(post("/contenido/batch")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 [
@@ -148,7 +157,7 @@ class ContentControllerTest {
     @Test
     void healthCheck_ReturnsUp() throws Exception {
         // When & Then
-        mockMvc.perform(get("/api/contenido/health"))
+        mockMvc.perform(get("/contenido/health"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("UP"))
                 .andExpect(jsonPath("$.service").value("techmind-api"))
