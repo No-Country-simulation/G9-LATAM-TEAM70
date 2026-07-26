@@ -41,6 +41,7 @@ logging:
 # Python ML Service Configuration (external service)
 ml:
   service:
+    enabled: ${ML_SERVICE_ENABLED:false}
     url: ${ML_SERVICE_URL:http://localhost:5000}
     timeout: ${ML_TIMEOUT:30000}
 
