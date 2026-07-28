@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ContentResponse {
 
-    private String categoria;
-    private Double probabilidad;
-    private List<String> informacionAdicional;
-    private String modeloUtilizado;
-    private Long tiempoProcesamientoMs;
+    private String category;
+    private Double score;
+    private List<String> keywords;
+    private String modelUsed;
+    private Long processingTimeMs;
     private Long inputId;
     private Long outputId;
 }

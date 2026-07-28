@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 public class ContentRequest {
 
     @NotBlank(message = "Title is required")
-    @Size(max = 200, message = "Title must not exceed 200 characters")
-    private String titulo;
+    @Size(max = 255, message = "Title must not exceed 255 characters")
+    private String title;
 
-    @NotBlank(message = "Text content is required")
-    @Size(max = 10000, message = "Text content must not exceed 10000 characters")
-    private String texto;
+    @NotBlank(message = "Content is required")
+    @Size(max = 10000, message = "Content must not exceed 10000 characters")
+    private String content;
 }

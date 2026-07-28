@@ -8,13 +8,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "output_users")
+@Table(name = "output_user")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(exclude = {"inputUser", "keywords"})
+@ToString(exclude = {"inputUser", "category", "keywords"})
 public class OutputUser {
 
     @Id
@@ -22,28 +22,23 @@ public class OutputUser {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(name = "category", nullable = false, length = 100)
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "input_user_id", nullable = false)
+    private InputUser inputUser;
 
-    @Column(name = "probability", nullable = false)
-    private Double probability;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
-    @Column(name = "model_used", length = 100)
-    private String modelUsed;
-
-    @Column(name = "processing_time_ms")
-    private Long processingTimeMs;
+    @Column(name = "score", nullable = false)
+    private Float score;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "input_user_id", nullable = false)
-    private InputUser inputUser;
-
     @ManyToMany
     @JoinTable(
-        name = "output_keywords",
+        name = "output_keyword",
         joinColumns = @JoinColumn(name = "output_user_id"),
         inverseJoinColumns = @JoinColumn(name = "keyword_id")
     )

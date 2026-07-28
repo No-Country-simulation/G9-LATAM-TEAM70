@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "keywords")
+@Table(name = "key_words")
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,8 +20,8 @@ public class KeyWord {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(name = "keyword", nullable = false, unique = true, length = 100)
-    private String keyword;
+    @Column(name = "word", nullable = false, unique = true, length = 50)
+    private String word;
 
     @ManyToMany(mappedBy = "keywords")
     @Builder.Default

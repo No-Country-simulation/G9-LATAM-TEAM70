@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechMind</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #15213d; background: #f5f7fb; }
+    body { margin: 0; padding: 32px 16px; }
+    main { max-width: 760px; margin: auto; background: #fff; padding: 32px; border-radius: 16px; box-shadow: 0 12px 32px #15213d18; }
+    h1 { margin-top: 0; } p { line-height: 1.5; }
+    label { display: block; font-weight: 600; margin: 18px 0 6px; }
+    input, textarea { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; }
+    textarea { min-height: 160px; resize: vertical; }
+    button { margin-top: 20px; background: #2563eb; color: #fff; border: 0; border-radius: 8px; padding: 12px 18px; font: inherit; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: .6; cursor: wait; }
+    #result { display: none; margin-top: 24px; padding: 18px; background: #eff6ff; border-radius: 10px; }
+    .error { background: #fef2f2 !important; color: #991b1b; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>TechMind</h1>
+    <p>Organiza contenido técnico y obtén una categoría con palabras clave.</p>
+    <form id="content-form">
+      <label for="title">Título</label>
+      <input id="title" maxlength="255" required placeholder="Ej. Introducción a Spring Boot">
+      <label for="content">Contenido</label>
+      <textarea id="content" maxlength="10000" required placeholder="Describe el contenido técnico que quieres organizar."></textarea>
+      <button id="submit" type="submit">Procesar contenido</button>
+    </form>
+    <section id="result" aria-live="polite"></section>
+    <p><a href="contenido/health" target="_blank">Comprobar estado de la API</a></p>
+  </main>
+  <script>
+    const form = document.querySelector('#content-form');
+    const result = document.querySelector('#result');
+    const button = document.querySelector('#submit');
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      button.disabled = true;
+      result.className = '';
+      result.style.display = 'block';
+      result.textContent = 'Procesando…';
+      try {
+        const response = await fetch('contenido', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: title.value, content: content.value })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'No se pudo procesar el contenido.');
+        result.innerHTML = `<strong>Categoría: ${data.category}</strong><br>Confianza: ${(data.score * 100).toFixed(0)}%<br>Palabras clave: ${data.keywords.join(', ')}<br><small>Modelo: ${data.modelUsed}</small>`;
+      } catch (error) {
+        result.className = 'error';
+        result.textContent = error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
