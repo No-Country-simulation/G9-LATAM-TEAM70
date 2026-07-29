@@ -2,7 +2,6 @@ package com.team70.API.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -63,7 +62,7 @@ public class JwtUtil {
                 .subject(subject)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expirationMs))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .signWith(getSignInKey(), Jwts.SIG.HS256)
                 .compact();
     }
 
