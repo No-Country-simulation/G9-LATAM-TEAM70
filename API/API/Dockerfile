@@ -1,6 +1,6 @@
 # Dockerfile multi-stage para TechMind API
 # Stage 1: Build de la aplicación Java con Maven
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ COPY src src
 RUN ./mvnw clean package -DskipTests -B
 
 # Stage 2: Runtime con Python + Java
-FROM eclipse-temurin:17-jre-alpine AS runtime
+FROM eclipse-temurin:21-jre-alpine AS runtime
 
 # Instalar Python y dependencias del sistema
 RUN apk add --no-cache \
@@ -43,7 +43,7 @@ COPY src/main/python/ ./python/
 COPY src/main/python/requirements.txt ./python/requirements.txt
 
 # Instalar dependencias Python
-RUN pip3 install --no-cache-dir -r ./python/requirements.txt
+RUN pip3 install --no-cache-dir --break-system-packages -r ./python/requirements.txt
 
 # Crear directorio para modelos
 RUN mkdir -p ./models && chown -R appuser:appgroup ./models ./python
