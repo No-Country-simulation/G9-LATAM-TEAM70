@@ -10,7 +10,7 @@ services:
       - MODEL_PATH=/app/models/modelo.pkl
       - VECTORIZER_PATH=/app/models/vectorizer.pkl
       - PYTHON_SCRIPT_PATH=/app/python/predict.py
-      - DB_PASSWORD=1234
+      - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - ./models:/app/models:ro
       - ./src/main/python:/app/python:ro
@@ -32,7 +32,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: TechMind_db
     volumes:
       - mysql-data:/var/lib/mysql
