@@ -84,3 +84,25 @@ a {
 .links {
   margin-top: 24px;
 }
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spinner-svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* El SVG animado se oculta por defecto */
+#loading-spinner {
+  display: none;
+}
+
+button:disabled {
+  opacity: .8;
+  cursor: wait;
+}

@@ -1,27 +1,34 @@
+// js/app.js
+console.log('⚡ [APP] Modulo app.js cargado correctamente.');
+
 import { API } from './api.js';
 import { UI } from './ui.js';
 
-// Escuchar el envío del formulario
-UI.elements.form.addEventListener('submit', async (event) => {
-  event.preventDefault(); // Previene la recarga nativa de la página
+// Verificación de seguridad para asegurar que el DOM localizó el formulario
+if (!UI.elements.form) {
+  console.error('❌ [APP] No se encontró el elemento #content-form en el DOM.');
+} else {
+  UI.elements.form.addEventListener('submit', async (event) => {
+    // IMPORTANTE: preventDefault debe ser la PRIMERA línea
+    event.preventDefault();
 
-  // 1. Obtener payload desde el formulario ({ title, content })
-  const payload = UI.getFormData();
+    console.group('🚀 [APP] Evento submit capturado exitosamente');
+    
+    const payload = UI.getFormData();
+    console.log('Datos del formulario capturados:', payload);
 
-  // 2. Activar estado visual de carga
-  UI.showLoading();
+    UI.showLoading();
 
-  try {
-    // 3. Petición POST a /contenido
-    const responseData = await API.processContent(payload);
-
-    // 4. Mostrar respuesta
-    UI.showSuccess(responseData);
-  } catch (error) {
-    // 5. Manejar errores de la API o red
-    UI.showError(error.message);
-  } finally {
-    // 6. Restablecer el botón
-    UI.hideLoading();
-  }
-});
+    try {
+      const responseData = await API.processContent(payload);
+      console.log('Respuesta recibida exitosamente:', responseData);
+      UI.showSuccess(responseData);
+    } catch (error) {
+      console.warn('Error durante el procesamiento:', error.message);
+      UI.showError(error.message);
+    } finally {
+      UI.hideLoading();
+      console.groupEnd();
+    }
+  });
+}
