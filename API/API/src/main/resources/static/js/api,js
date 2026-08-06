@@ -1,0 +1,27 @@
+/**
+ * Cliente HTTP centralizado para interactuar con los endpoints de Spring Boot
+ */
+export const API = {
+  /**
+   * Envía el texto a clasificar mediante POST a la API
+   * @param {Object} payload Datos del contenido ({ title, content })
+   * @returns {Promise<Object>} Respuesta parseada en JSON
+   */
+  async processContent(payload) {
+    const response = await fetch('contenido', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'No se pudo procesar el contenido.');
+    }
+
+    return data;
+  }
+};
