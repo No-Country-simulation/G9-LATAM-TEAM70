@@ -1,0 +1,14 @@
+# Dockerfile para entrenar/regenerar el modelo TechMind
+# Uso: docker compose --profile training run --rm model-trainer
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY src/main/python/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/main/python/ ./python/
+ENV PYTHONPATH=/app/python
+
+# Entrena y guarda modelos en /app/models (montado como volumen)
+CMD ["python", "/app/python/train_model.py"]
