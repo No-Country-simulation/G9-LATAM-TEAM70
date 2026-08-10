@@ -34,6 +34,7 @@ services:
       - ML_SERVICE_ENABLED=true
       - ML_SERVICE_URL=http://ml-service:5000
       - JWT_SECRET=${JWT_SECRET:-techmind-secret-key-2024-very-long-secret-key-for-hs256}
+      - TZ=America/Mexico_City
     depends_on:
       - mysql-db
       - ml-service
@@ -55,6 +56,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-1234}
       MYSQL_DATABASE: TechMind_db
+      TZ: America/Mexico_City
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
