@@ -185,3 +185,88 @@ La arquitectura utilizada quedará a criterio del equipo y deberá ser documenta
 ### OCI
 
 La solución debe utilizar al menos un servicio de OCI como parte obligatoria del proyecto.
+
+---
+
+## Arquitectura de la solución
+
+```
+┌─────────────────────┐      HTTP/JSON       ┌──────────────────────────┐
+│  techmind-api       │ ───────────────────► │  ml-service              │
+│  Spring Boot :8080  │  /predict            │  Python FastAPI :5000    │
+│  (JPA + MySQL)      │  /predict/batch      │  (TF-IDF + LogReg)       │
+└─────────┬───────────┘                      └────────────┬─────────────┘
+          │                                                │ joblib.load
+          ▼                                                ▼
+   ┌─────────────┐                              ┌──────────────────────┐
+   │  mysql-db   │                              │ models/*.pkl         │
+   │  MySQL :3307│                              │ modelo.pkl           │
+   └─────────────┘                              │ vectorizer.pkl       │
+                                                └──────────────────────┘
+```
+
+La capa de Ciencia de Datos es un **servicio independiente** (Python/FastAPI)
+que carga los modelos serializados `models/modelo.pkl` y
+`models/vectorizer.pkl` y expone `/predict` y `/predict/batch`. La API de
+Spring Boot consume esos endpoints vía HTTP (`ML_SERVICE_URL`).
+
+## Endpoints de la API
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/api/contenido/health` | Estado del servicio |
+| `POST` | `/api/contenido` | Clasifica un contenido (`title`, `content`) |
+| `POST` | `/api/contenido/batch` | Clasifica una lista de contenidos |
+| `POST` | `/api/auth/login` | Genera un JWT (`admin` / `admin123`) |
+| `POST` | `/api/auth/register` | Registro (demo) |
+
+Ejemplo de respuesta `POST /api/contenido`:
+
+```json
+{
+  "category": "Backend",
+  "score": 0.40,
+  "keywords": ["spring boot", "boot", "java spring"],
+  "modelUsed": "TF-IDF + LogisticRegression",
+  "processingTimeMs": 1782,
+  "inputId": 1,
+  "outputId": 1
+}
+```
+
+## Ejecución con Docker (recomendado)
+
+Requisito: Docker Desktop en ejecución. Ver `INSTRUCCIONES_DOCKER_TECHMIND.md`.
+
+```powershell
+cd API/API
+
+# Generar modelos .pkl (solo si no existen en ./models)
+docker compose --profile training run --rm model-trainer
+
+# Construir y arrancar (API + ML + MySQL)
+docker compose up -d --build
+
+# Estado
+docker compose ps
+```
+
+Servicios: API en `http://localhost:8080/api`, Swagger en
+`http://localhost:8080/api/swagger-ui/index.html`, ML en
+`http://localhost:5000/health`.
+
+## Ejecución local
+
+Ver `PRUEBAS_LOCALES.md`.
+
+1. Generar modelos: `cd API/API/src/main/python && python train_model.py`
+2. Lanzar ML: `python -m uvicorn predict:app --host 0.0.0.0 --port 5000`
+3. Lanzar API: `cd API/API && .\mvnw.cmd spring-boot:run`
+
+## Ciencia de Datos
+
+- Entrenamiento: `src/main/python/train_model.py` (dataset de 48 muestras,
+  TF-IDF con `ngram_range (1,2)` y Regresión Logística multiclase).
+- Modelo: `TF-IDF + LogisticRegression` (scikit-learn).
+- Serialización: `joblib` → `models/modelo.pkl` y `models/vectorizer.pkl`.
+- Metadatos: `model_metadata.json`.
