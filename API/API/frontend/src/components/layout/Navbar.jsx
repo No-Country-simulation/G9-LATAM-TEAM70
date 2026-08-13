@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -9,20 +9,35 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { Cpu, LayoutDashboard, Info, LogOut, User } from 'lucide-react';
+import { Cpu, LayoutDashboard, Info, LogOut, Sparkles, Sun, Moon } from 'lucide-react';
 import { mockUser } from '@/services/mockData';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function Navbar() {
   const navigate = useNavigate();
-  // Simulamos un estado de sesión para la maqueta
-  const isAuthenticated = true; 
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+  const isAuthenticated = true;
+
+  const scrollToSection = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md transition-colors">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-slate-900">
+        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-slate-900 dark:text-white">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-md">
             <Cpu className="h-5 w-5" />
           </div>
@@ -30,22 +45,52 @@ export default function Navbar() {
         </Link>
 
         {/* Links Centrales */}
-        <nav className="hidden md:flex items-center gap-6 font-medium text-sm text-slate-600">
-          <Link to="/" className="hover:text-indigo-600 transition-colors">
+        <nav className="hidden md:flex items-center gap-6 font-medium text-sm text-slate-600 dark:text-slate-300">
+          <button
+            onClick={() => scrollToSection('hero')}
+            className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
+          >
             Inicio
-          </Link>
-          <Link to="/workspace" className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
-            <LayoutDashboard className="h-4 w-4" />
-            Panel de Clasificación
-          </Link>
-          <Link to="/about" className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
+          </button>
+          <button
+            onClick={() => scrollToSection('caracteristicas')}
+            className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
+          >
+            <Sparkles className="h-4 w-4 text-indigo-500" />
+            Características
+          </button>
+          <button
+            onClick={() => scrollToSection('about')}
+            className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
+          >
             <Info className="h-4 w-4" />
             Acerca del Equipo
+          </button>
+          <Link to="/workspace" className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <LayoutDashboard className="h-4 w-4" />
+            Workspace
           </Link>
         </nav>
 
-        {/* Zona de Usuario / Auth */}
-        <div className="flex items-center gap-3">
+        {/* Zona de Usuario y Toggle de Tema */}
+        <div className="flex items-center gap-2">
+          
+          {/* Botón para alternar tema */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+            title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5 text-amber-400" />
+            ) : (
+              <Moon className="h-5 w-5 text-slate-700" />
+            )}
+          </Button>
+
+          {/* Menú o Botón Login */}
           {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -69,10 +114,6 @@ export default function Navbar() {
                 <DropdownMenuItem onClick={() => navigate('/workspace')}>
                   <LayoutDashboard className="mr-2 h-4 w-4" />
                   <span>Mi Workspace</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Mis Datos</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-red-600 focus:bg-red-50">

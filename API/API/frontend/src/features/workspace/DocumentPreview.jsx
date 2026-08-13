@@ -8,7 +8,7 @@ import { FileText, Cpu, Clock, Tag, ExternalLink, Sparkles } from 'lucide-react'
 export default function DocumentPreview({ document }) {
   if (!document) {
     return (
-      <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-slate-50/50 border-r border-slate-200">
+      <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-slate-50/50 dark:bg-slate-950/50 border-r border-slate-200">
         <FileText className="h-12 w-12 text-slate-300 mb-3" />
         <p className="font-semibold text-slate-700">Ningún documento seleccionado</p>
         <p className="text-xs text-slate-500 mt-1">

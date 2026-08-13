@@ -14,7 +14,7 @@ export default function WorkspacePage() {
   };
 
   return (
-    <div className="h-[calc(100vh-4rem)] grid grid-cols-12 overflow-hidden bg-slate-100">
+    <div className="h-[calc(100vh-4rem)] grid grid-cols-12 overflow-hidden bg-slate-100 dark:bg-slate-950 transition-colors">
       
       {/* Columna 1: Árbol (3 columnas de ancho en desktop) */}
       <div className="col-span-12 md:col-span-3 h-full overflow-hidden">

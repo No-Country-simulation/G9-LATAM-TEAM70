@@ -24,7 +24,7 @@ export default function FileTreeView({ documents, selectedDocId, onSelectDoc }) 
   );
 
   return (
-    <div className="h-full flex flex-col border-r border-slate-200 bg-white p-4 space-y-4">
+    <div className="h-full flex flex-col border-r border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-800 p-4 space-y-4">
       {/* Buscador */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
