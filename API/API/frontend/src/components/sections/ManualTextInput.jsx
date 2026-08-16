@@ -29,14 +29,14 @@ export default function ManualTextInput({ onClassifySuccess }) {
 
   return (
     <div className="w-full space-y-5">
-      {/* Selector de Pestañas (Tabs Header) */}
-      <div className="flex border-b border-navy/10 dark:border-white/10 pb-2 gap-2">
+      {/* Selector de Pestañas (Tabs Header) sin borde inferior */}
+      <div className="flex gap-2">
         <button
           type="button"
           onClick={() => setActiveTab('text')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all ${
             activeTab === 'text'
-              ? 'bg-navy text-snow shadow-md shadow-navy/20 dark:bg-golden dark:text-navy'
+              ? 'bg-wisteria text-navy shadow-md shadow-wisteria/30 dark:bg-wisteria dark:text-navy dark:shadow-wisteria/20'
               : 'text-primary/70 hover:text-primary hover:bg-snow/50 dark:hover:bg-navy/30'
           }`}
         >
@@ -47,9 +47,9 @@ export default function ManualTextInput({ onClassifySuccess }) {
         <button
           type="button"
           onClick={() => setActiveTab('file')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all ${
             activeTab === 'file'
-              ? 'bg-navy text-snow shadow-md shadow-navy/20 dark:bg-golden dark:text-navy'
+              ? 'bg-wisteria text-navy shadow-md shadow-wisteria/30 dark:bg-wisteria dark:text-navy dark:shadow-wisteria/20'
               : 'text-primary/70 hover:text-primary hover:bg-snow/50 dark:hover:bg-navy/30'
           }`}
         >

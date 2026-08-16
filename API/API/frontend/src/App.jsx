@@ -13,7 +13,6 @@ export default function App() {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
         <Navbar />
         <main className="flex-1">
-          Hello world!
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/workspace" element={<WorkspacePage />} />

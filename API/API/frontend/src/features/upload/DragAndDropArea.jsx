@@ -1,9 +1,6 @@
 import { useState } from 'react';
-import { UploadCloud, FileText, CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react';
+import { UploadCloud, FileText, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Card, CardContent } from '@/components/ui/card';
 
 export default function DragAndDropArea({ onClassifySuccess }) {
   const [isDragging, setIsDragging] = useState(false);
@@ -38,71 +35,78 @@ export default function DragAndDropArea({ onClassifySuccess }) {
     setIsAnalyzing(true);
     setTimeout(() => {
       setIsAnalyzing(false);
-      // Simulación de respuesta del modelo
-      onClassifySuccess({
-        type: 'file',
-        fileName: file.name,
-        category: 'Backend',
-        score: 0.96,
-        keywords: ['Spring Boot', 'REST API', 'Java', 'Inyección de Dependencias'],
-        summary: 'Documento técnico centrado en la arquitectura de backend con el framework Spring Boot y patrones de diseño API REST.'
-      });
+      if (onClassifySuccess) {
+        onClassifySuccess({
+          type: 'file',
+          fileName: file.name,
+          category: 'Backend',
+          score: 0.96,
+          keywords: ['Spring Boot', 'REST API', 'Java', 'Inyección de Dependencias'],
+          summary: 'Documento técnico centrado en la arquitectura de backend con el framework Spring Boot y patrones de diseño API REST.'
+        });
+      }
     }, 1200);
   };
 
   return (
     <div className="space-y-4">
-      {/* Dropzone Container */}
+      {/* Contenedor Dropzone estilizado con la paleta actual */}
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-xl p-8 text-center transition-all cursor-pointer bg-slate-50/50 ${
+        className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all cursor-pointer bg-snow/80 dark:bg-navy/40 ${
           isDragging
-            ? 'border-indigo-500 bg-indigo-50/50 scale-[1.01]'
+            ? 'border-navy bg-lavender/30 scale-[1.01] dark:border-golden dark:bg-navy/60'
             : file
-            ? 'border-emerald-500 bg-emerald-50/20'
-            : 'border-slate-300 hover:border-slate-400'
+            ? 'border-golden bg-golden/10 dark:border-golden/80'
+            : 'border-navy/20 dark:border-white/20 hover:border-navy/50 dark:hover:border-white/50'
         }`}
       >
         <input
           type="file"
           id="file-upload"
           className="hidden"
-          accept=".txt,.pdf,.docx,.md"
+          accept=".txt,.md"
           onChange={handleFileChange}
         />
 
         {!file ? (
           <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center gap-3">
-            <div className="h-14 w-14 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 shadow-sm">
+            <div className="h-14 w-14 rounded-full bg-lavender/50 dark:bg-navy/60 flex items-center justify-center text-navy dark:text-golden shadow-sm transition-transform group-hover:scale-105">
               <UploadCloud className="h-7 w-7" />
             </div>
             <div>
-              <p className="font-semibold text-slate-800 text-base">
+              <p className="font-bold text-primary text-base">
                 Arrastra y suelta tu documento aquí
               </p>
-              <p className="text-xs text-slate-500 mt-1">
-                Soporta archivos <span className="font-medium text-slate-700">.txt, .pdf, .docx, .md</span> (máx. 10MB)
+              <p className="text-xs text-secondary/80 mt-1">
+                Soporta archivos <span className="font-semibold text-primary">.txt y .md</span> (máx. 10MB)
               </p>
             </div>
-            <Button type="button" variant="outline" size="sm" className="mt-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="mt-2 border-navy/20 dark:border-white/20 text-primary hover:bg-lavender/40 dark:hover:bg-navy/50 rounded-xl"
+            >
               Explorar Equipo
             </Button>
           </label>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-full bg-golden/20 text-navy dark:text-golden flex items-center justify-center shadow-inner">
               <FileText className="h-6 w-6" />
             </div>
             <div>
-              <p className="font-semibold text-slate-800">{file.name}</p>
-              <p className="text-xs text-slate-500">{(file.size / 1024).toFixed(1)} KB</p>
+              <p className="font-bold text-primary">{file.name}</p>
+              <p className="text-xs text-secondary">{(file.size / 1024).toFixed(1)} KB</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mt-2">
               <Button
+                type="button"
                 size="sm"
-                className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="bg-navy hover:bg-navy/90 text-snow dark:bg-golden dark:text-navy dark:hover:bg-golden/90 font-semibold shadow-md rounded-xl"
                 onClick={handleSimulateAnalysis}
                 disabled={isAnalyzing}
               >
@@ -116,8 +120,10 @@ export default function DragAndDropArea({ onClassifySuccess }) {
                 )}
               </Button>
               <Button
+                type="button"
                 variant="ghost"
                 size="sm"
+                className="text-secondary hover:text-primary rounded-xl"
                 onClick={() => setFile(null)}
                 disabled={isAnalyzing}
               >
