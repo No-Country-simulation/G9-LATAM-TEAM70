@@ -217,8 +217,6 @@ Spring Boot consume esos endpoints vía HTTP (`ML_SERVICE_URL`).
 | `GET` | `/api/contenido/health` | Estado del servicio |
 | `POST` | `/api/contenido` | Clasifica un contenido (`title`, `content`) |
 | `POST` | `/api/contenido/batch` | Clasifica una lista de contenidos |
-| `POST` | `/api/auth/login` | Genera un JWT (`admin` / `admin123`) |
-| `POST` | `/api/auth/register` | Registro (demo) |
 
 Ejemplo de respuesta `POST /api/contenido`:
 

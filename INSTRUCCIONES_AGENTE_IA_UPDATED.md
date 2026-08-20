@@ -62,13 +62,13 @@ Debes mapear y construir las entidades JPA basadas en el esquema optimizado de *
 
 ### 2. Gestión de Dependencias (`pom.xml` / `build.gradle`)
 * **Eliminar dependencias innecesarias:** Remover librerías residuales, conectores no utilizados o bibliotecas de integración directa con scripts ejecutables de Python.
-* **Agregar dependencias necesarias:** 
+* **Agregar dependencias necesarias:**
   * Spring Boot Starter Web.
   * Spring Data JPA / Hibernate.
   * MySQL Connector/J (`com.mysql:mysql-connector-j`).
   * Lombok (para reducción de boilerplate code).
   * RestTemplate / WebClient (para comunicación HTTP con el servicio externo de Python si aplica).
-  * Spring Security & JWT (si requiere autenticación).
+  * Spring Security & token (si requiere autenticación).
 
 ### 3. Modelos y Endpoints para Conexión / Integración
 * Crear las entidades JPA correspondientes al esquema actualizado de `TechMind_db` (`InputUser`, `OutputUser`, `Category`, `KeyWord`).

@@ -1,0 +1,281 @@
+id,titulo,texto,categoria,fuente
+1,Introducción a Spring Boot,"En este contenido se presentan los conceptos básicos para la creación de APIs REST utilizando Java y Spring Boot, incluyendo el manejo de controladores y servicios.",Backend,equipo
+2,Autenticación con token en Node.js,Se explica cómo implementar autenticación basada en tokens token en una aplicación backend construida con Node.js y Express.,Backend,equipo
+3,Microservicios con Spring Cloud,"Este artículo describe la arquitectura de microservicios utilizando Spring Cloud, Eureka para el descubrimiento de servicios y Feign para la comunicación entre ellos.",Backend,equipo
+4,Django REST Framework para APIs,"Se muestra cómo construir una API REST en Python utilizando Django REST Framework, incluyendo serializadores y vistas basadas en clases.",Backend,equipo
+5,Manejo de excepciones en APIs REST,Este tutorial cubre las mejores prácticas para el manejo centralizado de excepciones en una API REST desarrollada con Java y Spring.,Backend,equipo
+6,Programación asíncrona en Node.js,"Se explican los conceptos de callbacks, promesas y async/await para el manejo de operaciones asíncronas en Node.js.",Backend,equipo
+7,Diseño de endpoints RESTful,"Este contenido aborda las convenciones para diseñar endpoints RESTful, incluyendo el uso correcto de verbos HTTP y códigos de estado.",Backend,equipo
+8,Introducción a GraphQL,"Se presenta una introducción a GraphQL como alternativa a REST para el desarrollo de APIs, mostrando ejemplos de queries y mutations.",Backend,equipo
+9,Validación de datos en APIs con Java,Este tutorial muestra cómo utilizar Bean Validation en Spring Boot para validar los datos de entrada en los endpoints de una API.,Backend,equipo
+10,Arquitectura hexagonal en backend,Se explica el patrón de arquitectura hexagonal (puertos y adaptadores) aplicado al desarrollo de aplicaciones backend en Java.,Backend,equipo
+11,Colas de mensajes con RabbitMQ,Este contenido describe cómo integrar RabbitMQ en una aplicación backend para el procesamiento asíncrono de tareas.,Backend,equipo
+12,Autorización basada en roles,Se cubre la implementación de control de acceso basado en roles (RBAC) utilizando Spring Security en una API Java.,Backend,equipo
+13,Testing unitario de servicios backend,Este tutorial enseña a escribir pruebas unitarias para servicios backend utilizando JUnit y Mockito en Java.,Backend,equipo
+14,Introducción a FastAPI,Se presenta FastAPI como framework de Python para construir APIs REST de alto rendimiento con validación automática de datos.,Backend,equipo
+15,Patrones de diseño en backend,"Este artículo repasa patrones de diseño comunes como Repository, Factory y Singleton aplicados al desarrollo backend.",Backend,equipo
+16,Introducción a gRPC,Se presenta gRPC como protocolo de comunicación de alto rendimiento basado en Protocol Buffers para servicios backend.,Backend,equipo
+17,Spring Data JPA,Este contenido explica cómo utilizar Spring Data JPA para simplificar el acceso a bases de datos relacionales desde Java.,Backend,equipo
+18,WebSockets para comunicación en tiempo real,Se muestra cómo implementar comunicación bidireccional en tiempo real utilizando WebSockets en una aplicación backend.,Backend,equipo
+19,Caché con Redis en backend,Este tutorial cubre cómo integrar Redis como capa de caché para mejorar el rendimiento de una API.,Backend,equipo
+20,API Gateway y su función,Se explica el rol de un API Gateway como punto de entrada único para gestionar múltiples microservicios.,Backend,equipo
+21,Rate limiting en APIs,Este contenido presenta técnicas de limitación de tasa para proteger APIs de abuso y sobrecarga.,Backend,equipo
+22,Autenticación con OAuth2,Se cubre el flujo de autorización OAuth2 para permitir el acceso seguro a recursos protegidos.,Backend,equipo
+23,Introducción a Servlets en Java,Este tutorial explica los conceptos básicos de Servlets como base del desarrollo web en Java.,Backend,equipo
+24,Procesamiento por lotes con Spring Batch,Se presenta Spring Batch para el procesamiento de grandes volúmenes de datos en tareas programadas.,Backend,equipo
+25,Arquitectura CQRS,Este contenido explica el patrón CQRS para separar las operaciones de lectura y escritura en sistemas backend.,Backend,equipo
+26,Serialización de datos con JSON,Se cubre cómo serializar y deserializar objetos Java a formato JSON utilizando Jackson.,Backend,equipo
+27,Manejo de concurrencia en Java,"Este tutorial presenta conceptos de hilos, sincronización y manejo de concurrencia en aplicaciones backend Java.",Backend,equipo
+28,Inyección de dependencias,Se explica el principio de inyección de dependencias y cómo se implementa en frameworks como Spring.,Backend,equipo
+29,Versionado de APIs REST,Este contenido cubre estrategias para versionar endpoints de una API REST sin romper compatibilidad.,Backend,equipo
+30,Middlewares en Express.js,Se presenta el concepto de middlewares en Express.js para interceptar y procesar peticiones HTTP.,Backend,equipo
+31,Componentes reutilizables en React,Se explica cómo crear componentes reutilizables en React utilizando props y hooks para mantener el código organizado.,Frontend,equipo
+32,Introducción a Angular,"Este contenido presenta los conceptos fundamentales de Angular, incluyendo módulos, componentes y servicios.",Frontend,equipo
+33,Manejo de estado con Redux,Se muestra cómo gestionar el estado global de una aplicación React utilizando Redux y Redux Toolkit.,Frontend,equipo
+34,Diseño responsivo con CSS Grid,Este tutorial cubre el uso de CSS Grid y Flexbox para construir diseños responsivos que se adaptan a distintos tamaños de pantalla.,Frontend,equipo
+35,Vue.js para principiantes,"Se presenta una introducción a Vue.js, cubriendo directivas, componentes y el sistema de reactividad.",Frontend,equipo
+36,Optimización de rendimiento en React,Este artículo explica técnicas como memoización y lazy loading para mejorar el rendimiento de aplicaciones React.,Frontend,equipo
+37,Formularios controlados en React,"Se explica cómo manejar formularios controlados en React, incluyendo validación de campos y manejo de eventos.",Frontend,equipo
+38,Introducción a TypeScript en frontend,Este contenido muestra cómo utilizar TypeScript en proyectos frontend para agregar tipado estático y reducir errores.,Frontend,equipo
+39,Animaciones con CSS y JavaScript,Se cubren técnicas para crear animaciones fluidas utilizando transiciones CSS y la API de animaciones de JavaScript.,Frontend,equipo
+40,Consumo de APIs REST desde React,Este tutorial muestra cómo realizar peticiones HTTP desde una aplicación React utilizando fetch y axios.,Frontend,equipo
+41,Accesibilidad web (a11y),Se explican las mejores prácticas de accesibilidad web para asegurar que las aplicaciones sean utilizables por todas las personas.,Frontend,equipo
+42,Diseño de interfaces con Figma,Este artículo describe el flujo de trabajo para diseñar interfaces de usuario en Figma antes de implementarlas en código.,Frontend,equipo
+43,Enrutamiento en aplicaciones SPA,Se presenta el uso de React Router para manejar la navegación en aplicaciones de una sola página (SPA).,Frontend,equipo
+44,Introducción a Tailwind CSS,Este contenido explica cómo utilizar Tailwind CSS como framework de utilidades para estilizar interfaces rápidamente.,Frontend,equipo
+45,Web Components y su uso,Se cubre el concepto de Web Components como estándar para crear elementos HTML personalizados y reutilizables.,Frontend,equipo
+46,Introducción a Svelte,Este contenido presenta Svelte como framework frontend que compila componentes a código JavaScript optimizado.,Frontend,equipo
+47,Server-Side Rendering con Next.js,Se explica cómo utilizar Next.js para renderizar aplicaciones React del lado del servidor.,Frontend,equipo
+48,Testing de componentes con Jest,Este tutorial cubre cómo escribir pruebas unitarias para componentes frontend utilizando Jest y Testing Library.,Frontend,equipo
+49,Custom Hooks en React,Se muestra cómo crear hooks personalizados en React para reutilizar lógica entre componentes.,Frontend,equipo
+50,CSS-in-JS con Styled Components,Este contenido explica cómo estilizar componentes React utilizando la librería Styled Components.,Frontend,equipo
+51,Progressive Web Apps (PWA),Se presenta cómo convertir una aplicación web en una PWA con capacidades offline e instalación.,Frontend,equipo
+52,Gestión de formularios con Formik,Este tutorial cubre el uso de Formik para simplificar la validación y el manejo de formularios en React.,Frontend,equipo
+53,Diseño mobile-first,Se explica el enfoque mobile-first para diseñar interfaces que priorizan pantallas pequeñas.,Frontend,equipo
+54,Introducción a Webpack,Este contenido presenta Webpack como empaquetador de módulos para optimizar assets frontend.,Frontend,equipo
+55,Componentes controlados vs no controlados,Se cubre la diferencia entre componentes controlados y no controlados en formularios de React.,Frontend,equipo
+56,Internacionalización (i18n) en frontend,Este tutorial explica cómo implementar soporte multi-idioma en una aplicación frontend.,Frontend,equipo
+57,Micro-frontends,Se presenta la arquitectura de micro-frontends para dividir aplicaciones grandes en módulos independientes.,Frontend,equipo
+58,Introducción a Vite,Este contenido cubre Vite como herramienta de desarrollo frontend rápida basada en ES modules.,Frontend,equipo
+59,Gestión de temas (dark mode),Se explica cómo implementar un sistema de temas claro/oscuro en una aplicación frontend.,Frontend,equipo
+60,Renderizado condicional en React,Este tutorial muestra técnicas para mostrar u ocultar elementos de la interfaz según el estado de la aplicación.,Frontend,equipo
+61,Introducción a Pandas,Este contenido presenta las operaciones básicas de la librería Pandas para la manipulación y análisis de datos en Python.,Data Science,equipo
+62,Clasificación de texto con TF-IDF,Se explica cómo utilizar TF-IDF y modelos de clasificación como regresión logística para categorizar textos.,Data Science,equipo
+63,Limpieza y preprocesamiento de datos,"Este tutorial cubre técnicas de limpieza de datos, incluyendo el manejo de valores nulos y outliers.",Data Science,equipo
+64,Visualización de datos con Matplotlib,Se muestra cómo crear gráficos y visualizaciones utilizando Matplotlib y Seaborn en Python.,Data Science,equipo
+65,Introducción al aprendizaje supervisado,"Este contenido explica los conceptos fundamentales del aprendizaje supervisado, incluyendo clasificación y regresión.",Data Science,equipo
+66,Clustering con K-Means,Se presenta el algoritmo K-Means para agrupar datos no etiquetados en clústeres basados en similitud.,Data Science,equipo
+67,Procesamiento de lenguaje natural (NLP),"Este artículo cubre técnicas básicas de NLP como tokenización, stopwords y lematización.",Data Science,equipo
+68,Evaluación de modelos de clasificación,"Se explican métricas como precisión, recall y F1-score para evaluar el desempeño de modelos de clasificación.",Data Science,equipo
+69,Redes neuronales con TensorFlow,Este contenido presenta una introducción a las redes neuronales utilizando TensorFlow y Keras.,Data Science,equipo
+70,Análisis exploratorio de datos (EDA),Se muestra cómo realizar un análisis exploratorio de datos para identificar patrones y relaciones antes del modelado.,Data Science,equipo
+71,Selección de características,Este tutorial cubre técnicas para seleccionar las variables más relevantes en un conjunto de datos.,Data Science,equipo
+72,Similitud de textos con embeddings,Se explica cómo utilizar embeddings de palabras para medir la similitud semántica entre textos.,Data Science,equipo
+73,Series de tiempo con Python,Este contenido presenta técnicas para el análisis y predicción de series de tiempo utilizando Python.,Data Science,equipo
+74,Regularización en modelos de machine learning,Se cubren técnicas de regularización como L1 y L2 para evitar el sobreajuste en modelos predictivos.,Data Science,equipo
+75,Sistemas de recomendación,Este artículo explica los fundamentos de los sistemas de recomendación basados en filtrado colaborativo y basado en contenido.,Data Science,equipo
+76,Introducción a Scikit-Learn,Este contenido presenta la librería Scikit-Learn para construir modelos de machine learning en Python.,Data Science,equipo
+77,Árboles de decisión,Se explica el funcionamiento de los árboles de decisión como modelo interpretable de clasificación.,Data Science,equipo
+78,Random Forest,Este tutorial cubre el algoritmo Random Forest como conjunto de árboles de decisión para mejorar la precisión.,Data Science,equipo
+79,Validación cruzada (cross-validation),Se presenta la técnica de validación cruzada para evaluar modelos de forma más robusta.,Data Science,equipo
+80,Reducción de dimensionalidad con PCA,Este contenido explica el análisis de componentes principales (PCA) para reducir la dimensionalidad de los datos.,Data Science,equipo
+81,Detección de outliers,Se cubren técnicas estadísticas para identificar valores atípicos en un conjunto de datos.,Data Science,equipo
+82,Word embeddings con Word2Vec,Este tutorial presenta Word2Vec para representar palabras como vectores densos que capturan relaciones semánticas.,Data Science,equipo
+83,Análisis de sentimientos,Se explica cómo construir un modelo de análisis de sentimientos para clasificar textos como positivos o negativos.,Data Science,equipo
+84,Balanceo de clases con SMOTE,Este contenido cubre la técnica SMOTE para generar ejemplos sintéticos y balancear clases minoritarias.,Data Science,equipo
+85,Introducción a redes neuronales convolucionales,Se presenta el funcionamiento de las redes neuronales convolucionales (CNN) para procesamiento de imágenes.,Data Science,equipo
+86,Optimización de hiperparámetros,Este tutorial explica técnicas como Grid Search y Random Search para optimizar hiperparámetros de modelos.,Data Science,equipo
+87,Extracción de tópicos con LDA,Se cubre Latent Dirichlet Allocation (LDA) como técnica para descubrir tópicos ocultos en un conjunto de textos.,Data Science,equipo
+88,Introducción a Jupyter Notebooks,Este contenido presenta Jupyter Notebook como entorno interactivo para el desarrollo de análisis de datos.,Data Science,equipo
+89,Métricas de similitud de coseno,Se explica cómo calcular la similitud del coseno entre vectores para comparar documentos de texto.,Data Science,equipo
+90,Pipeline de machine learning con Scikit-Learn,Este tutorial muestra cómo construir un pipeline reproducible que combine preprocesamiento y modelado.,Data Science,equipo
+91,Introducción a Android con Kotlin,Este contenido presenta los conceptos básicos del desarrollo de aplicaciones Android utilizando el lenguaje Kotlin.,Mobile,equipo
+92,Desarrollo de apps con Flutter,Se explica cómo crear aplicaciones multiplataforma utilizando Flutter y el lenguaje Dart.,Mobile,equipo
+93,Ciclo de vida de actividades en Android,Este tutorial cubre el ciclo de vida de las actividades en Android y cómo gestionarlo correctamente.,Mobile,equipo
+94,Introducción a SwiftUI,Se presenta SwiftUI como framework declarativo para construir interfaces de usuario en aplicaciones iOS.,Mobile,equipo
+95,Consumo de APIs REST en apps móviles,Este contenido muestra cómo realizar peticiones HTTP desde una aplicación Android utilizando Retrofit.,Mobile,equipo
+96,React Native para desarrollo multiplataforma,Se explica cómo utilizar React Native para desarrollar aplicaciones móviles compartiendo código entre Android e iOS.,Mobile,equipo
+97,Almacenamiento local en aplicaciones móviles,Este tutorial cubre el uso de bases de datos locales como SQLite y Room en aplicaciones Android.,Mobile,equipo
+98,Notificaciones push en aplicaciones móviles,Se presenta cómo implementar notificaciones push utilizando Firebase Cloud Messaging.,Mobile,equipo
+99,Diseño de interfaces en Jetpack Compose,Este contenido explica cómo construir interfaces de usuario declarativas en Android utilizando Jetpack Compose.,Mobile,equipo
+100,Gestión de permisos en Android,Se cubre cómo solicitar y gestionar permisos del sistema en aplicaciones Android.,Mobile,equipo
+101,Publicación de apps en Google Play,Este tutorial explica el proceso de preparación y publicación de una aplicación en Google Play Store.,Mobile,equipo
+102,Arquitectura MVVM en aplicaciones móviles,Se presenta el patrón de arquitectura MVVM aplicado al desarrollo de aplicaciones Android e iOS.,Mobile,equipo
+103,Pruebas unitarias en aplicaciones Android,Este contenido cubre cómo escribir pruebas unitarias para aplicaciones Android utilizando JUnit y Espresso.,Mobile,equipo
+104,Desarrollo de apps con Xamarin,Se explica cómo utilizar Xamarin para el desarrollo de aplicaciones móviles multiplataforma con C#.,Mobile,equipo
+105,Optimización de rendimiento en apps móviles,Este tutorial cubre técnicas para mejorar el rendimiento y reducir el consumo de batería en aplicaciones móviles.,Mobile,equipo
+106,Introducción a Jetpack Navigation,Este contenido presenta el componente de navegación de Jetpack para gestionar transiciones entre pantallas en Android.,Mobile,equipo
+107,Gestión de estado en Flutter con Provider,Se explica cómo utilizar Provider para manejar el estado de la aplicación en Flutter.,Mobile,equipo
+108,Integración de mapas en apps móviles,Este tutorial cubre cómo integrar Google Maps en una aplicación Android.,Mobile,equipo
+109,Biometría y autenticación en móviles,"Se presenta cómo implementar autenticación biométrica (huella, Face ID) en aplicaciones móviles.",Mobile,equipo
+110,Deep linking en aplicaciones móviles,Este contenido explica cómo configurar deep links para abrir pantallas específicas desde enlaces externos.,Mobile,equipo
+111,Introducción a Kotlin Multiplatform,Se cubre Kotlin Multiplatform como solución para compartir código entre Android e iOS.,Mobile,equipo
+112,Animaciones en Jetpack Compose,Este tutorial presenta cómo crear animaciones fluidas en interfaces construidas con Jetpack Compose.,Mobile,equipo
+113,Manejo de estados de red (offline-first),Se explica el enfoque offline-first para que las aplicaciones móviles funcionen sin conexión.,Mobile,equipo
+114,Widgets en Android,Este contenido cubre cómo crear widgets de pantalla de inicio para aplicaciones Android.,Mobile,equipo
+115,Integración con Bluetooth en apps móviles,Se presenta cómo conectar dispositivos Bluetooth desde una aplicación móvil.,Mobile,equipo
+116,CI/CD para aplicaciones móviles,Este tutorial explica cómo automatizar builds y despliegues de apps móviles con Fastlane.,Mobile,equipo
+117,Diseño de UI para iOS con UIKit,Se cubre el uso de UIKit como framework imperativo para construir interfaces en aplicaciones iOS.,Mobile,equipo
+118,Gestión de dependencias con Gradle,Este contenido presenta cómo configurar dependencias y variantes de build utilizando Gradle en Android.,Mobile,equipo
+119,Cámara y galería en apps móviles,Se explica cómo acceder a la cámara y galería del dispositivo desde una aplicación móvil.,Mobile,equipo
+120,Internacionalización en apps móviles,Este tutorial cubre cómo soportar múltiples idiomas en aplicaciones Android e iOS.,Mobile,equipo
+121,Introducción a Docker,"Este contenido presenta los conceptos básicos de Docker, incluyendo imágenes, contenedores y Dockerfiles.",DevOps,equipo
+122,Orquestación con Kubernetes,Se explica cómo utilizar Kubernetes para la orquestación y escalado de contenedores en producción.,DevOps,equipo
+123,Integración continua con Jenkins,Este tutorial cubre la configuración de pipelines de integración continua utilizando Jenkins.,DevOps,equipo
+124,Infraestructura como código con Terraform,Se presenta Terraform como herramienta para definir y gestionar infraestructura en la nube mediante código.,DevOps,equipo
+125,Monitoreo de aplicaciones con Prometheus,Este contenido explica cómo configurar Prometheus y Grafana para monitorear el rendimiento de aplicaciones.,DevOps,equipo
+126,Despliegue continuo (CD),Se cubren las prácticas de despliegue continuo para automatizar la entrega de nuevas versiones de software.,DevOps,equipo
+127,Gestión de secretos en entornos DevOps,Este tutorial muestra cómo gestionar credenciales y secretos de forma segura utilizando Vault.,DevOps,equipo
+128,Automatización con Ansible,Se presenta Ansible como herramienta de automatización para la configuración de servidores.,DevOps,equipo
+129,Contenedores multi-etapa en Docker,Este contenido explica cómo utilizar builds multi-etapa en Docker para optimizar el tamaño de las imágenes.,DevOps,equipo
+130,Estrategias de despliegue Blue-Green,Se cubre la estrategia de despliegue Blue-Green para minimizar el tiempo de inactividad en producción.,DevOps,equipo
+131,Logging centralizado con ELK Stack,"Este tutorial explica cómo configurar Elasticsearch, Logstash y Kibana para el manejo centralizado de logs.",DevOps,equipo
+132,GitOps y su implementación,Se presenta el enfoque GitOps para gestionar despliegues utilizando Git como fuente de verdad.,DevOps,equipo
+133,Escalado automático de aplicaciones,Este contenido cubre cómo configurar el autoescalado de aplicaciones basado en métricas de uso.,DevOps,equipo
+134,Seguridad en pipelines CI/CD,Se explican prácticas de seguridad para proteger los pipelines de integración y despliegue continuo.,DevOps,equipo
+135,Introducción a GitHub Actions,Este tutorial presenta GitHub Actions como herramienta para automatizar flujos de trabajo de CI/CD.,DevOps,equipo
+136,Introducción a GitLab CI/CD,Este contenido presenta cómo configurar pipelines de integración continua utilizando GitLab CI/CD.,DevOps,equipo
+137,Helm charts para Kubernetes,Se explica cómo utilizar Helm para empaquetar y desplegar aplicaciones en clústeres de Kubernetes.,DevOps,equipo
+138,Infraestructura inmutable,Este tutorial cubre el concepto de infraestructura inmutable y sus ventajas frente a servidores mutables.,DevOps,equipo
+139,Monitoreo de logs con Fluentd,Se presenta Fluentd como herramienta para recolectar y unificar logs en entornos distribuidos.,DevOps,equipo
+140,Service mesh con Istio,Este contenido explica el concepto de service mesh y cómo Istio gestiona la comunicación entre microservicios.,DevOps,equipo
+141,Gestión de configuración con Chef,Se cubre Chef como herramienta de automatización para gestionar configuración de servidores.,DevOps,equipo
+142,Canary releases,Este tutorial presenta la estrategia de despliegue canary para liberar cambios gradualmente a un subconjunto de usuarios.,DevOps,equipo
+143,Health checks y readiness probes,Se explica cómo configurar health checks en Kubernetes para verificar el estado de los contenedores.,DevOps,equipo
+144,Gestión de artefactos con Nexus,Este contenido cubre el uso de Nexus Repository para almacenar y versionar artefactos de build.,DevOps,equipo
+145,Introducción a Docker Compose,Se presenta Docker Compose para orquestar múltiples contenedores en entornos de desarrollo local.,DevOps,equipo
+146,Chaos Engineering,Este tutorial explica los principios de Chaos Engineering para probar la resiliencia de sistemas distribuidos.,DevOps,equipo
+147,Observabilidad en sistemas distribuidos,"Se cubren los tres pilares de la observabilidad: logs, métricas y trazas distribuidas.",DevOps,equipo
+148,Seguridad de contenedores,Este contenido presenta buenas prácticas para escanear y proteger imágenes de contenedores Docker.,DevOps,equipo
+149,Configuración de variables de entorno,Se explica cómo gestionar variables de entorno de forma segura en pipelines de CI/CD.,DevOps,equipo
+150,Introducción a Terraform Cloud,Este tutorial cubre Terraform Cloud como plataforma colaborativa para gestionar el estado de infraestructura.,DevOps,equipo
+151,Introducción a PostgreSQL,"Este contenido presenta los conceptos básicos de PostgreSQL, incluyendo tablas, consultas y relaciones.",Bases de Datos,equipo
+152,Normalización de bases de datos,Se explican las formas normales utilizadas para diseñar bases de datos relacionales eficientes.,Bases de Datos,equipo
+153,Introducción a MongoDB,Este tutorial cubre los conceptos fundamentales de MongoDB como base de datos NoSQL orientada a documentos.,Bases de Datos,equipo
+154,Índices y optimización de consultas SQL,Se presenta cómo utilizar índices para mejorar el rendimiento de las consultas en bases de datos relacionales.,Bases de Datos,equipo
+155,Transacciones y propiedades ACID,Este contenido explica las propiedades ACID y su importancia en el manejo de transacciones en bases de datos.,Bases de Datos,equipo
+156,Modelado de datos relacional,"Se cubre el proceso de modelado de datos, incluyendo diagramas entidad-relación y claves foráneas.",Bases de Datos,equipo
+157,Bases de datos orientadas a grafos,Este tutorial presenta Neo4j como ejemplo de base de datos orientada a grafos para relaciones complejas.,Bases de Datos,equipo
+158,Replicación y alta disponibilidad,Se explican las estrategias de replicación de bases de datos para garantizar alta disponibilidad.,Bases de Datos,equipo
+159,Consultas avanzadas con SQL,"Este contenido cubre el uso de subconsultas, joins y funciones de ventana en SQL.",Bases de Datos,equipo
+160,Introducción a Redis,Se presenta Redis como base de datos en memoria utilizada para caché y almacenamiento de estructuras de datos.,Bases de Datos,equipo
+161,Particionamiento de bases de datos,Este tutorial explica las técnicas de particionamiento horizontal y vertical para escalar bases de datos.,Bases de Datos,equipo
+162,Diseño de esquemas NoSQL,Se cubre cómo diseñar esquemas eficientes para bases de datos NoSQL orientadas a documentos.,Bases de Datos,equipo
+163,Backup y recuperación de datos,Este contenido presenta estrategias de respaldo y recuperación ante desastres para bases de datos.,Bases de Datos,equipo
+164,Bases de datos en memoria,Se explica el funcionamiento de las bases de datos en memoria y sus casos de uso principales.,Bases de Datos,equipo
+165,Migraciones de esquemas de bases de datos,Este tutorial cubre cómo gestionar migraciones de esquemas utilizando herramientas como Flyway o Liquibase.,Bases de Datos,equipo
+166,Introducción a Cassandra,Este contenido presenta Apache Cassandra como base de datos NoSQL distribuida orientada a columnas.,Bases de Datos,equipo
+167,Vistas materializadas en SQL,Se explica el uso de vistas materializadas para precomputar y acelerar consultas complejas.,Bases de Datos,equipo
+168,Procedimientos almacenados,Este tutorial cubre cómo crear y utilizar procedimientos almacenados en bases de datos relacionales.,Bases de Datos,equipo
+169,Introducción a Elasticsearch,Se presenta Elasticsearch como motor de búsqueda y análisis distribuido basado en documentos JSON.,Bases de Datos,equipo
+170,Sharding en bases de datos,Este contenido explica la técnica de sharding para distribuir datos horizontalmente entre múltiples servidores.,Bases de Datos,equipo
+171,Diseño de claves primarias y foráneas,Se cubre cómo definir correctamente claves primarias y foráneas para mantener la integridad referencial.,Bases de Datos,equipo
+172,Bases de datos vectoriales,Este tutorial presenta las bases de datos vectoriales utilizadas para búsquedas de similitud semántica.,Bases de Datos,equipo
+173,Consultas geoespaciales,Se explica cómo realizar consultas geoespaciales en bases de datos como PostgreSQL con PostGIS.,Bases de Datos,equipo
+174,Control de concurrencia en bases de datos,Este contenido cubre los niveles de aislamiento de transacciones y su impacto en la concurrencia.,Bases de Datos,equipo
+175,Introducción a DynamoDB,Se presenta Amazon DynamoDB como base de datos NoSQL administrada y altamente escalable.,Bases de Datos,equipo
+176,Data warehousing y ETL,Este tutorial explica los conceptos de almacenamiento de datos y procesos ETL para análisis empresarial.,Bases de Datos,equipo
+177,Triggers en bases de datos,Se cubre cómo utilizar triggers para ejecutar acciones automáticas ante cambios en las tablas.,Bases de Datos,equipo
+178,Optimización de consultas con EXPLAIN,Este contenido presenta cómo utilizar el comando EXPLAIN para analizar y optimizar el rendimiento de consultas SQL.,Bases de Datos,equipo
+179,Bases de datos de series temporales,Se explica el uso de bases de datos especializadas como InfluxDB para almacenar datos con marca de tiempo.,Bases de Datos,equipo
+180,Modelado dimensional,Este tutorial cubre el modelado dimensional con esquemas estrella y copo de nieve para data warehouses.,Bases de Datos,equipo
+181,Introducción a OCI Object Storage,Este contenido presenta el servicio de Object Storage de Oracle Cloud Infrastructure para el almacenamiento de archivos y modelos.,Cloud,equipo
+182,Cómputo en la nube con OCI Compute,Se explica cómo desplegar aplicaciones utilizando instancias de cómputo en Oracle Cloud Infrastructure.,Cloud,equipo
+183,Funciones serverless con OCI Functions,Este tutorial cubre el uso de OCI Functions para ejecutar código sin gestionar servidores.,Cloud,equipo
+184,Introducción a AWS Lambda,Se presenta AWS Lambda como servicio serverless para ejecutar funciones en respuesta a eventos.,Cloud,equipo
+185,Almacenamiento en la nube con Amazon S3,Este contenido explica cómo utilizar Amazon S3 para el almacenamiento escalable de objetos.,Cloud,equipo
+186,Redes virtuales en la nube,Se cubre el diseño de redes virtuales (VCN) para aislar y conectar recursos en la nube.,Cloud,equipo
+187,Escalabilidad de aplicaciones en la nube,Este tutorial presenta estrategias para escalar aplicaciones horizontalmente en entornos cloud.,Cloud,equipo
+188,Seguridad en servicios cloud,Se explican las mejores prácticas de seguridad para proteger recursos desplegados en la nube.,Cloud,equipo
+189,Bases de datos administradas en la nube,Este contenido cubre el uso de servicios de bases de datos administradas como Autonomous Database en OCI.,Cloud,equipo
+190,Balanceo de carga en la nube,Se presenta el uso de balanceadores de carga para distribuir tráfico entre instancias en la nube.,Cloud,equipo
+191,Migración de aplicaciones a la nube,Este tutorial explica las estrategias comunes para migrar aplicaciones on-premise a infraestructura cloud.,Cloud,equipo
+192,Contenedores en la nube con OCI,Se cubre cómo desplegar aplicaciones contenerizadas utilizando Container Engine for Kubernetes en OCI.,Cloud,equipo
+193,Costos y optimización en la nube,Este contenido presenta estrategias para optimizar costos en servicios de infraestructura cloud.,Cloud,equipo
+194,Identidad y acceso en la nube (IAM),"Se explica cómo gestionar usuarios, roles y permisos utilizando servicios de IAM en la nube.",Cloud,equipo
+195,Multi-cloud y su implementación,Este tutorial cubre las consideraciones para adoptar una estrategia multi-cloud en una organización.,Cloud,equipo
+196,Introducción a Azure Functions,Este contenido presenta Azure Functions como servicio serverless de Microsoft para ejecutar código bajo demanda.,Cloud,equipo
+197,Autonomous Database en OCI,Se explica el servicio Autonomous Database de Oracle Cloud Infrastructure para bases de datos autoadministradas.,Cloud,equipo
+198,Content Delivery Network (CDN),Este tutorial cubre cómo utilizar una CDN para distribuir contenido estático con baja latencia global.,Cloud,equipo
+199,Infraestructura como código con OCI Resource Manager,Se presenta OCI Resource Manager para gestionar infraestructura mediante plantillas Terraform en Oracle Cloud.,Cloud,equipo
+200,Alta disponibilidad multi-región,Este contenido explica estrategias para desplegar aplicaciones en múltiples regiones y garantizar disponibilidad.,Cloud,equipo
+201,Contenedores serverless,Se cubre el concepto de contenedores serverless para ejecutar cargas de trabajo sin gestionar infraestructura.,Cloud,equipo
+202,Gestión de secretos en la nube,Este tutorial presenta servicios de gestión de secretos como OCI Vault para proteger credenciales.,Cloud,equipo
+203,Colas de mensajes en la nube,Se explica el uso de servicios de colas administradas como OCI Queue para desacoplar componentes de una aplicación.,Cloud,equipo
+204,Introducción a Google Cloud Platform,Este contenido presenta los servicios principales de Google Cloud Platform para cómputo y almacenamiento.,Cloud,equipo
+205,Facturación y presupuestos en la nube,Se cubre cómo configurar alertas de presupuesto para controlar costos en servicios cloud.,Cloud,equipo
+206,Backup automatizado en la nube,Este tutorial explica cómo configurar copias de seguridad automáticas para instancias y bases de datos en la nube.,Cloud,equipo
+207,VPN y conectividad híbrida,Se presenta cómo establecer conexiones VPN entre infraestructura on-premise y la nube.,Cloud,equipo
+208,Auto scaling de instancias,Este contenido cubre cómo configurar reglas de autoescalado basadas en métricas de CPU y memoria.,Cloud,equipo
+209,Despliegue de modelos de ML en la nube,Se explica cómo desplegar un modelo de machine learning como servicio utilizando OCI Data Science o similar.,Cloud,equipo
+210,Etiquetado y organización de recursos cloud,Este tutorial cubre las mejores prácticas de etiquetado (tags) para organizar y rastrear costos de recursos en la nube.,Cloud,equipo
+211,Mensajería con Apache Kafka,Este contenido presenta Apache Kafka como plataforma de streaming de eventos para la comunicación entre servicios backend.,Backend,equipo
+212,Patrón Circuit Breaker,Se explica el patrón circuit breaker para prevenir fallos en cascada cuando un servicio dependiente no responde.,Backend,equipo
+213,Feature flags en backend,Este tutorial cubre cómo utilizar feature flags para activar o desactivar funcionalidades sin desplegar nuevo código.,Backend,equipo
+214,Patrón Saga para transacciones distribuidas,Se presenta el patrón Saga para coordinar transacciones que abarcan múltiples microservicios.,Backend,equipo
+215,Documentación de APIs con OpenAPI,Este contenido explica cómo documentar una API REST utilizando la especificación OpenAPI y Swagger.,Backend,equipo
+216,Endpoints de health check,Se cubre cómo implementar endpoints de salud (health checks) para monitorear la disponibilidad de un servicio backend.,Backend,equipo
+217,Balanceo de carga entre instancias backend,Este tutorial presenta estrategias de balanceo de carga para distribuir tráfico entre múltiples instancias de un servicio.,Backend,equipo
+218,Negociación de contenido en APIs REST,Se explica cómo una API puede responder en distintos formatos según las cabeceras Accept del cliente.,Backend,equipo
+219,Idempotencia en operaciones de API,Este contenido cubre por qué las operaciones idempotentes son clave para APIs confiables ante reintentos.,Backend,equipo
+220,Estrategias de logging en backend,Se presenta cómo estructurar logs efectivos en aplicaciones backend para facilitar la depuración y el monitoreo.,Backend,equipo
+221,Gestión de estado con Zustand,Este contenido presenta Zustand como alternativa ligera a Redux para el manejo de estado en aplicaciones React.,Frontend,equipo
+222,Sistemas de diseño (design systems),Se explica cómo construir un sistema de diseño consistente para mantener coherencia visual entre componentes.,Frontend,equipo
+223,Documentación de componentes con Storybook,Este tutorial cubre cómo utilizar Storybook para documentar y probar componentes de interfaz de forma aislada.,Frontend,equipo
+224,Pantallas de carga tipo skeleton,Se presenta el uso de skeleton screens para mejorar la percepción de velocidad mientras carga el contenido.,Frontend,equipo
+225,Debounce y throttle en JavaScript,Este contenido explica las técnicas de debounce y throttle para optimizar eventos frecuentes como scroll o input.,Frontend,equipo
+226,Uso de DevTools del navegador,Se cubre cómo utilizar las herramientas de desarrollador del navegador para depurar y optimizar aplicaciones frontend.,Frontend,equipo
+227,Historial de navegación con History API,Este tutorial presenta la History API para gestionar la navegación en aplicaciones de una sola página.,Frontend,equipo
+228,Variables CSS personalizadas,Se explica cómo utilizar custom properties de CSS para crear temas dinámicos y mantenibles.,Frontend,equipo
+229,Interfaces de arrastrar y soltar (drag-and-drop),Este contenido cubre cómo implementar funcionalidad de arrastrar y soltar en interfaces web.,Frontend,equipo
+230,Presupuestos de rendimiento frontend,Se presenta el concepto de performance budgets para mantener aplicaciones frontend rápidas y livianas.,Frontend,equipo
+231,Clasificador Naive Bayes,Este contenido explica el algoritmo Naive Bayes y su aplicación en la clasificación de texto.,Data Science,equipo
+232,Máquinas de soporte vectorial (SVM),Se presenta el funcionamiento de las máquinas de soporte vectorial como modelo de clasificación.,Data Science,equipo
+233,Métodos de ensamble: bagging y boosting,Este tutorial cubre técnicas de ensamble como bagging y boosting para mejorar el rendimiento de modelos.,Data Science,equipo
+234,Aumento de datos para texto,Se explican técnicas de data augmentation aplicadas a texto para ampliar conjuntos de datos pequeños.,Data Science,equipo
+235,Explicabilidad de modelos con SHAP,Este contenido presenta SHAP como técnica para interpretar las predicciones de modelos de machine learning.,Data Science,equipo
+236,Interpretación de la matriz de confusión,Se cubre cómo leer e interpretar una matriz de confusión para evaluar modelos de clasificación.,Data Science,equipo
+237,Resumen automático de textos,Este tutorial explica técnicas de resumen automático (text summarization) para condensar contenido extenso.,Data Science,equipo
+238,Reconocimiento de entidades nombradas (NER),"Se presenta la tarea de NER para identificar personas, lugares y organizaciones dentro de un texto.",Data Science,equipo
+239,Pruebas A/B para modelos de machine learning,Este contenido cubre cómo diseñar pruebas A/B para comparar el desempeño de distintos modelos en producción.,Data Science,equipo
+240,Fundamentos de MLOps,Se explican los conceptos básicos de MLOps para gestionar el ciclo de vida de modelos de machine learning en producción.,Data Science,equipo
+241,Persistencia de estado en apps móviles,Este contenido explica cómo guardar y restaurar el estado de una aplicación móvil entre sesiones.,Mobile,equipo
+242,Compras dentro de la aplicación (in-app purchases),Se presenta cómo integrar compras dentro de la aplicación en plataformas Android e iOS.,Mobile,equipo
+243,Perfilado de rendimiento en apps móviles,Este tutorial cubre cómo utilizar herramientas de profiling para detectar cuellos de botella en aplicaciones móviles.,Mobile,equipo
+244,Herramientas de testing multiplataforma,Se explican herramientas para probar aplicaciones móviles en distintos dispositivos y sistemas operativos.,Mobile,equipo
+245,Accesibilidad en aplicaciones móviles,Este contenido cubre las mejores prácticas de accesibilidad para aplicaciones Android e iOS.,Mobile,equipo
+246,Iconos y splash screens,Se presenta cómo diseñar y configurar iconos de aplicación y pantallas de carga inicial (splash screens).,Mobile,equipo
+247,Seguridad en aplicaciones móviles,Este tutorial explica prácticas de seguridad como cifrado local y protección contra ingeniería inversa en apps móviles.,Mobile,equipo
+248,Tareas en segundo plano en apps móviles,Se cubre cómo ejecutar tareas en segundo plano de forma eficiente en Android e iOS.,Mobile,equipo
+249,Integración de analítica en apps móviles,Este contenido presenta cómo integrar herramientas de analítica para medir el comportamiento de los usuarios.,Mobile,equipo
+250,Patrones de diseño de UI móvil,"Se explican patrones comunes de interfaz como bottom navigation, tabs y drawers en aplicaciones móviles.",Mobile,equipo
+251,Dashboards de monitoreo de infraestructura,Este contenido explica cómo construir dashboards para visualizar métricas de infraestructura en tiempo real.,DevOps,equipo
+252,Optimización de costos en DevOps,Se presentan estrategias para reducir costos de infraestructura sin afectar la disponibilidad del servicio.,DevOps,equipo
+253,Registros de contenedores (container registries),Este tutorial cubre el uso de registries como Docker Hub o Harbor para almacenar imágenes de contenedores.,DevOps,equipo
+254,Despliegues sin tiempo de inactividad,Se explican técnicas para lograr despliegues de cero downtime en producción.,DevOps,equipo
+255,Feature toggles en despliegues,Este contenido presenta el uso de feature toggles para controlar la liberación gradual de funcionalidades.,DevOps,equipo
+256,Herramientas de pruebas de carga,Se cubre el uso de herramientas como JMeter o k6 para realizar pruebas de carga sobre aplicaciones.,DevOps,equipo
+257,Automatización de respuesta a incidentes,Este tutorial explica cómo automatizar la detección y respuesta ante incidentes en producción.,DevOps,equipo
+258,Gestión de drift de configuración,Se presenta cómo detectar y corregir desviaciones de configuración en infraestructura gestionada como código.,DevOps,equipo
+259,Pipelines de CI de múltiples etapas,Este contenido cubre cómo estructurar pipelines de integración continua con múltiples etapas de validación.,DevOps,equipo
+260,Prácticas de DevSecOps,Se explican las prácticas de DevSecOps para integrar seguridad a lo largo de todo el ciclo de vida del software.,DevOps,equipo
+261,Estrategias de caché de consultas,Este contenido explica cómo implementar caché de consultas para reducir la carga sobre la base de datos.,Bases de Datos,equipo
+262,Pooling de conexiones a bases de datos,Se presenta el uso de connection pooling para gestionar eficientemente las conexiones a una base de datos.,Bases de Datos,equipo
+263,Búsqueda de texto completo en SQL,Este tutorial cubre cómo implementar búsqueda de texto completo utilizando índices especializados en SQL.,Bases de Datos,equipo
+264,Automatización de migraciones de base de datos,Se explica cómo automatizar migraciones de esquema como parte de un pipeline de despliegue.,Bases de Datos,equipo
+265,Réplicas de lectura (read replicas),Este contenido presenta el uso de réplicas de lectura para distribuir la carga de consultas en bases de datos.,Bases de Datos,equipo
+266,Versionado de esquemas de base de datos,Se cubre cómo llevar control de versiones sobre los cambios de esquema en una base de datos.,Bases de Datos,equipo
+267,Columnas JSON en bases de datos relacionales,Este tutorial explica cómo almacenar y consultar datos semiestructurados utilizando columnas JSON en SQL.,Bases de Datos,equipo
+268,Modelado de datos de series temporales,Se presenta cómo modelar eficientemente datos con marca de tiempo en bases de datos relacionales y NoSQL.,Bases de Datos,equipo
+269,Ajuste de rendimiento en bases de datos,Este contenido cubre técnicas generales de tuning para mejorar el rendimiento de una base de datos.,Bases de Datos,equipo
+270,Lenguajes de consulta para grafos,Se explican lenguajes como Cypher para realizar consultas sobre bases de datos orientadas a grafos.,Bases de Datos,equipo
+271,Arquitectura cloud-native,Este contenido presenta los principios de arquitectura cloud-native para construir aplicaciones escalables en la nube.,Cloud,equipo
+272,Kubernetes en proveedores cloud,Se explica cómo utilizar servicios administrados de Kubernetes en distintos proveedores de nube.,Cloud,equipo
+273,Gobernanza de costos en la nube,Este tutorial cubre prácticas de gobernanza para controlar y auditar el gasto en servicios cloud.,Cloud,equipo
+274,Recuperación ante desastres en la nube,Se presenta cómo diseñar estrategias de recuperación ante desastres (disaster recovery) en infraestructura cloud.,Cloud,equipo
+275,Herramientas de monitoreo en la nube,Este contenido explica el uso de herramientas nativas de monitoreo ofrecidas por proveedores cloud.,Cloud,equipo
+276,Gestión de APIs en la nube,Se cubre cómo utilizar servicios de API management para exponer y proteger APIs en la nube.,Cloud,equipo
+277,Federación de identidad en la nube,Este tutorial presenta cómo federar identidades entre sistemas on-premise y proveedores de nube.,Cloud,equipo
+278,Computación en el borde (edge computing),Se explica el concepto de edge computing para procesar datos más cerca del usuario final.,Cloud,equipo
+279,Niveles de almacenamiento en la nube,Este contenido cubre los distintos niveles de almacenamiento cloud según frecuencia de acceso y costo.,Cloud,equipo
+280,CI/CD nativo en la nube,Se presenta cómo implementar pipelines de integración y despliegue continuo utilizando servicios nativos de la nube.,Cloud,equipo

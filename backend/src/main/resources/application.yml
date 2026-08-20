@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: techmind-api
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/TechMind_db?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    # Se habilita automáticamente con el perfil docker.
+    enabled: ${FLYWAY_ENABLED:false}
+
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    context-path: /api
+  shutdown: graceful
+
+logging:
+  level:
+    com.team70: INFO
+
+ml:
+  service:
+    enabled: ${ML_SERVICE_ENABLED:false}
+    url: ${ML_SERVICE_URL:http://localhost:5000}
+    timeout: ${ML_TIMEOUT:30000}

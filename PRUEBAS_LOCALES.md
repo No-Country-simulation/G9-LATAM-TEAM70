@@ -29,7 +29,6 @@ En PowerShell:
 $env:DB_PASSWORD = "tu_contrasena_mysql"
 $env:ML_SERVICE_ENABLED = "true"
 $env:ML_SERVICE_URL = "http://localhost:5000"
-$env:JWT_SECRET = "una-clave-secreta-segura-de-al-menos-32-caracteres"
 ```
 
 Lanza el servicio de Machine Learning en otra terminal:
@@ -82,17 +81,6 @@ curl.exe http://localhost:8080/api/contenido/health
 }
 ```
 
-### Autenticación
-
-Los endpoints de contenido se exponen con autenticación **abierta** en la
-configuración actual (`SecurityConfig` permite todas las rutas). El login JWT
-está disponible por si se habilita seguridad:
-`POST /api/auth/login` (usuario `admin` / contraseña `admin123`):
-
-```text
-Authorization: Bearer <token>
-```
-
 ### Clasificar contenido
 
 ```powershell
@@ -118,7 +106,7 @@ curl.exe -X POST http://localhost:8080/api/contenido `
 ```powershell
 curl.exe -X POST http://localhost:8080/api/contenido/batch `
   -H "Content-Type: application/json" `
-  -d '[{"title":"Spring Security","content":"Autenticacion y autorizacion con JWT."},{"title":"React Hooks","content":"useState y useEffect para interfaces."}]'
+  -d '[{"title":"Spring Security","content":"Prácticas de seguridad en aplicaciones web."},{"title":"React Hooks","content":"useState y useEffect para interfaces."}]'
 ```
 
 ## Solución de problemas
@@ -127,5 +115,4 @@ curl.exe -X POST http://localhost:8080/api/contenido/batch `
 |---|---|
 | No se conecta a MySQL | Verifica que MySQL esté activo, que exista `TechMind_db` y que `DB_PASSWORD` sea correcto. |
 | Error al procesar contenido | Confirma que el servicio indicado por `ML_SERVICE_URL` esté disponible y exponga `/predict` y `/predict/batch`. |
-| Error 401 | Inicia sesión y envía un JWT válido en `Authorization: Bearer <token>`. |
 | Puerto 8080 ocupado | Define otro puerto con `--server.port=<puerto>` al iniciar la aplicación. |

@@ -1,8 +1,15 @@
 .idea/
 .env
+.env.*
+!.env.example
 __pycache__/
 *.pyc
 .venv/
 venv/
 target/
 node_modules/
+dist/
+.vite/
+*.log
+*.iml
+.DS_Store
