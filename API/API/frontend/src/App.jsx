@@ -1,12 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-<<<<<<< Updated upstream
 import Navbar from '@/components/layout/Navbar';
 
-// Vistas Temporales (Placeholders para verificar que el router funciona)
+// --- IMPORTACIONES ACTIVAS ---
 import LandingPage from '@/pages/LandingPage';
 import WorkspacePage from '@/pages/WorkspacePage';
 import AboutPage from '@/features/landing/AboutSection';
-import LoginPage from '@/pages/LoginPage';
+// import LoginPage from '@/pages/LoginPage'; // <-- LOGIN COMENTADO PARA PRUEBAS
+
+// --- IMPORTACIONES DEL STASH (Pendientes de revisión) ---
+// import { AuthProvider } from '@/context/AuthContext';
+// import AuthPage from '@/pages/AuthPage';
 
 export default function App() {
   return (
@@ -18,22 +21,20 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/workspace" element={<WorkspacePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            {/* <Route path="/login" element={<LoginPage />} /> */}
           </Routes>
         </main>
       </div>
     </Router>
-=======
-import { AuthProvider } from '@/context/AuthContext';
-import Navbar from '@/components/layout/Navbar';
+  );
+}
 
-// Páginas
-import LandingPage from '@/pages/LandingPage';
-import WorkspacePage from '@/pages/WorkspacePage';
-import AboutPage from '@/features/landing/AboutSection';
-import AuthPage from '@/pages/AuthPage';
+/*
+====================================================================
+  VERSIÓN STASHED (Guardada para consultar con el equipo más tarde)
+====================================================================
 
-export default function App() {
+export default function AppStashed() {
   return (
     <AuthProvider>
       <Router>
@@ -50,6 +51,6 @@ export default function App() {
         </div>
       </Router>
     </AuthProvider>
->>>>>>> Stashed changes
   );
 }
+*/

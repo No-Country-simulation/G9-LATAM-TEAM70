@@ -80,6 +80,25 @@ services:
     networks:
       - techmind-network
 
+  # Aplicación Frontend en React (Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Evita conflictos entre tu máquina de Windows y el Linux del contenedor
+    environment:
+      # Esta variable te servirá para que React sepa a qué URL enviar las peticiones
+      - VITE_API_URL=http://localhost:8080/api
+    depends_on:
+      - techmind-api
+    restart: unless-stopped
+    networks:
+      - techmind-network
+
 networks:
   techmind-network:
     driver: bridge

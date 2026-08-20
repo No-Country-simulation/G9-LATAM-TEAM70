@@ -31,11 +31,12 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-base sm:text-lg text-secondary max-w-2xl mx-auto leading-normal"
         >
-<<<<<<< Updated upstream
+          {/* Opción Upstream (Activa) */}
           Categoriza apuntes, lecturas y textos de investigación al instante para estudiantes y profesores.
-=======
+
+          {/* Opción Stashed (Guardada para consultar):
           Categoriza apuntes, lecturas y textos de investigación al instante.
->>>>>>> Stashed changes
+          */}
         </motion.p>
 
         {/* Demo Interactivo Integrado (Fondo Wisteria sin Borde) */}
