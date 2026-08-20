@@ -12,6 +12,15 @@
 
 TechMind recibe contenido técnico desde una interfaz React, lo procesa con una API Spring Boot y un servicio de Machine Learning en Python, y conserva los resultados en MySQL. El stack está contenerizado para ejecutarse localmente o en OCI.
 
+## Equipo
+
+| Integrante | Rol |
+| --- | --- |
+| Diana Ruiz Moctezuma | Data Analyst |
+| Ruben Omar Rodriguez Carrillo | Desarrollador Frontend |
+| Joel Kaleb Moreno Valenzuela | Desarrollador Backend / Infraestructura |
+| Alejandro Corona Jimenez | Desarrollador Backend |
+
 ## Sector empresarial
 
 Educación / Tecnología / Productividad — plataformas de aprendizaje, comunidades técnicas y profesionales que consumen grandes volúmenes de contenido (documentación, cursos, artículos, videos y anotaciones) y necesitan organizar, buscar y reutilizar el conocimiento de forma eficiente.
