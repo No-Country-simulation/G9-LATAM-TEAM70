@@ -1,5 +1,17 @@
 # Proyecto 1: TechMind – Organización Inteligente del Conocimiento Técnico
 
+<p align="center">
+  <img src="frontend/src/assets/hero.png" alt="Identidad visual de TechMind" width="220" />
+</p>
+
+## Vista general
+
+<p align="center">
+  <img src="docs/images/techmind-architecture.svg" alt="Arquitectura de TechMind: frontend, API, servicio ML y MySQL" width="100%" />
+</p>
+
+TechMind recibe contenido técnico desde una interfaz React, lo procesa con una API Spring Boot y un servicio de Machine Learning en Python, y conserva los resultados en MySQL. El stack está contenerizado para ejecutarse localmente o en OCI.
+
 ## Sector empresarial
 
 Educación / Tecnología / Productividad — plataformas de aprendizaje, comunidades técnicas y profesionales que consumen grandes volúmenes de contenido (documentación, cursos, artículos, videos y anotaciones) y necesitan organizar, buscar y reutilizar el conocimiento de forma eficiente.

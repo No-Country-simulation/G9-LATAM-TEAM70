@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title description">
+  <title id="title">Arquitectura de TechMind</title>
+  <desc id="description">El frontend React se comunica con la API Spring Boot, que usa el servicio de Machine Learning Python y MySQL.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0f172a"/><stop offset="1" stop-color="#312e81"/></linearGradient>
+    <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-opacity=".22"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c4b5fd"/></marker>
+  </defs>
+  <rect width="1200" height="480" rx="28" fill="url(#background)"/>
+  <text x="600" y="67" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="31" font-weight="700">Arquitectura de TechMind</text>
+  <text x="600" y="98" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="17">Clasificación inteligente de conocimiento técnico</text>
+  <path d="M275 246 H410" stroke="#c4b5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M655 209 H790" stroke="#c4b5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M655 291 H790" stroke="#c4b5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="55" y="165" width="220" height="160" rx="18" fill="#f8fafc"/>
+    <rect x="55" y="165" width="220" height="12" rx="6" fill="url(#accent)"/>
+    <text x="165" y="226" text-anchor="middle" fill="#312e81" font-family="Arial, sans-serif" font-size="24" font-weight="700">Frontend</text>
+    <text x="165" y="256" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="17">React + Nginx</text>
+    <text x="165" y="285" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="15">Interfaz web</text>
+    <rect x="410" y="165" width="245" height="160" rx="18" fill="#f8fafc"/>
+    <rect x="410" y="165" width="245" height="12" rx="6" fill="url(#accent)"/>
+    <text x="532" y="226" text-anchor="middle" fill="#312e81" font-family="Arial, sans-serif" font-size="24" font-weight="700">API</text>
+    <text x="532" y="256" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="17">Spring Boot</text>
+    <text x="532" y="285" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="15">REST + Flyway</text>
+    <rect x="790" y="125" width="320" height="145" rx="18" fill="#f8fafc"/>
+    <rect x="790" y="125" width="320" height="12" rx="6" fill="url(#accent)"/>
+    <text x="950" y="186" text-anchor="middle" fill="#312e81" font-family="Arial, sans-serif" font-size="24" font-weight="700">Servicio ML</text>
+    <text x="950" y="216" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="17">Python + FastAPI</text>
+    <text x="950" y="245" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="15">Modelos PKL</text>
+    <rect x="790" y="300" width="320" height="105" rx="18" fill="#f8fafc"/>
+    <rect x="790" y="300" width="320" height="12" rx="6" fill="url(#accent)"/>
+    <text x="950" y="353" text-anchor="middle" fill="#312e81" font-family="Arial, sans-serif" font-size="24" font-weight="700">MySQL</text>
+    <text x="950" y="382" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="15">Persistencia de resultados</text>
+  </g>
+  <text x="600" y="448" text-anchor="middle" fill="#ddd6fe" font-family="Arial, sans-serif" font-size="15">Contenedores Docker listos para OCI</text>
+</svg>
