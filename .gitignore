@@ -13,3 +13,4 @@ dist/
 *.log
 *.iml
 .DS_Store
+.m2/

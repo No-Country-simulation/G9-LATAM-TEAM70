@@ -85,11 +85,11 @@
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- H2 Database for Testing -->
+        <!-- H2 Database for tests and the free Render demo profile -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- flyway -->
