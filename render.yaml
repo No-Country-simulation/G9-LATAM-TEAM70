@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: techmind-ml-g9-team70
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile.ml.render
+    dockerContext: .
+    healthCheckPath: /health
+
+  - type: web
+    name: techmind-api-g9-team70
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/contenido/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: render
+      - key: JAVA_OPTS
+        value: -Xms128m -Xmx384m -XX:+UseG1GC
+      - key: ML_SERVICE_URL
+        value: https://techmind-ml-g9-team70.onrender.com
+      - key: CORS_ALLOWED_ORIGINS
+        value: "*"
